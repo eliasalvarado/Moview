@@ -10,7 +10,7 @@
 - **Información y filtro:** 
 > Se podrán filtrar las películas, según su género, año de publicación, puntaje, etc. Además, si el usuario selecciona una película en concreto, se le mostará toda la información relacionada a esta.
 - **Perfiles de críticos:** 
-> Se colocarán perfiles de críticos y directores reconocidos, además de contener sus opiniones dentro de sus perfiles previamente creados (o utilizados por ellos).
+> Los perfiles de críticos conocidos serán identificados con un *Check* luego de su nombre.
 
 ## **Servicios**
  **APIs a utilizar:**
