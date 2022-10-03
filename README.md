@@ -1,5 +1,6 @@
 # Moview
  Aplicación con una gran colección de películas y series, y sus distintas reseñas.
+ ![This is an image](https://github.com/eliasalvarado/Moview/blob/main/Moview%20(3).png)
 
  Muchas veces cuando tenemos tiempo libre miramos una película o alguna serie, incluso cuando terminamos de ver una serie, queremos empezar a ver otra. Pero ¿Cómo sabemos que esa película o serie nos va a gustar antes de verla? A la mayoría nos gusta saber de qué se va a tratar y no perder nuestro tiempo viendo algo que no nos gusta. Por lo que MoView le brinda al usuario una colección de películas y series en donde se despliega la información de dicha película o serie, podrá comentar y agregarla a su lista de favoritos. 
  Esta aplicación buscará reducir el número de esos cinéfilos y seriéfilos que al final de la cinta quedan decepcionados al percatarse que la película o serie no era lo que esperaban y consideran que fue una pérdida de tiempo.
