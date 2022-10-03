@@ -18,3 +18,5 @@
 > Esta API será la que estará alimentando a la aplicación Moview con la información necesaria para que el usuario tenga 
 > toda la información que necesita de las distintas películas y series que consulte. Proveerá a la aplicación con el nombre, año de estreno, reparto,
 > imágenes, entre otros detalles requeridos para proporcionar al usuario la mejor especificación del título seleccionado.
+- Base de datos de usuarios
+> Cuando un usuario quiera loggearse o registrar una cuenta nueva, se estará consultado una base de datos local la cuál contendrá los usuarios que se han creado hasta el momento.
