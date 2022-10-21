@@ -47,8 +47,127 @@
         android:textColor="@color/white"
         android:textSize="15dp"
         />
+    <ImageView
+        android:id="@+id/iconoLike"
+        android:layout_width="@dimen/sizeIcono"
+        android:layout_height="@dimen/sizeIcono"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        android:src="@drawable/ic_like"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:layout_marginStart="50dp"
+        />
+    <TextView
+        android:id="@+id/porcentajeDeLikesDetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/iconoLike"
+        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:text="##%"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp"
+        />
+    <TextView
+        android:id="@+id/calificaPeliculaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calificaPelicula"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/margenHorizontal"
+        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:textSize="18sp"
+        />
+    <ImageButton
+        android:id="@+id/botonCalificaPeliculaDetalles"
+        android:layout_width="@dimen/sizeIcono"
+        android:layout_height="@dimen/sizeIcono"
+        android:src="@drawable/ic_baseline_add_box_24"
+        app:layout_constraintEnd_toStartOf="@id/calificaPeliculaText"
+        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:layout_marginEnd="@dimen/separacion10dp"
+        />
+
+    <Button
+        android:id="@+id/botonAcercaDeDetalles"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:text="@string/acerca_de"
+        app:layout_constraintEnd_toStartOf="@id/botonRepartoDetalles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iconoLike" />
+    <Button
+        android:id="@+id/botonRepartoDetalles"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/botonAcercaDeDetalles"
+        app:layout_constraintTop_toBottomOf="@id/iconoLike"
+        app:layout_constraintEnd_toStartOf="@id/botonComentariosDetalles"
+        android:text="@string/reparto"
+        android:layout_marginTop="@dimen/separacion10dp"
+        />
+    <Button
+        android:id="@+id/botonComentariosDetalles"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/iconoLike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/botonRepartoDetalles"
+        android:text="@string/comentarios"
+        android:textSize="13dp"
+        android:layout_marginTop="@dimen/separacion10dp"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/botonRepartoDetalles"
+        android:backgroundTint="@color/fondoClaro"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tituloDetalles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Titulo"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/separacion10dp"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tituloDetalles"
+                android:textColor="@color/white"
+                android:padding="25dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

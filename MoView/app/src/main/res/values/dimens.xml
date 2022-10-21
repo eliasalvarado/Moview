@@ -3,4 +3,5 @@
     <dimen name="margenHorizontal">20dp</dimen>
     <dimen name="separacion10dp">10dp</dimen>
     <dimen name="radio">15dp</dimen>
+    <dimen name="sizeIcono">30dp</dimen>
 </resources>
