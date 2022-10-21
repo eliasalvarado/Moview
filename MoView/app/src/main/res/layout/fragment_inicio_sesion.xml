@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.InisioSesion.InicioSesionFragment"
+    android:background="@color/fondoOscuro">
+
+    <ImageView
+        android:id="@+id/logoIniciodeSesion"
+        android:layout_width="275dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginVertical="70dp"
+        app:layout_constraintBottom_toTopOf="@id/carta"/>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/carta"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoIniciodeSesion"
+        android:backgroundTint="@color/fondoClaro"
+        app:cardCornerRadius="25dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/usuarioTextInicioSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/usuario"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="@dimen/margenHorizontal"
+                android:textColor="@color/white"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="@dimen/separacion10dp"
+                android:id="@+id/ingresoUsuarioregistro"
+                app:layout_constraintTop_toBottomOf="@id/usuarioTextInicioSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/margenHorizontal"
+                android:hint="@string/ingresoUsuario"
+                android:textColorHint="@color/colorTextInputs"
+                app:boxBackgroundColor="@color/fondoOscuro"
+                app:boxCornerRadiusBottomEnd="15dp"
+                app:boxCornerRadiusBottomStart="15dp"
+                app:boxCornerRadiusTopEnd="15dp"
+                app:boxCornerRadiusTopStart="15dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/contraTextRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ingresoUsuarioregistro"
+                android:layout_marginStart="@dimen/margenHorizontal"
+                android:text="@string/contra"
+                android:layout_marginTop="@dimen/separacion10dp"
+                android:textColor="@color/white"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="@dimen/separacion10dp"
+                android:id="@+id/ingresoContraRegistro"
+                app:layout_constraintTop_toBottomOf="@id/contraTextRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/margenHorizontal"
+                android:hint="@string/ingresoContra"
+                android:textColorHint="@color/colorTextInputs"
+                app:boxBackgroundColor="@color/fondoOscuro"
+                app:boxCornerRadiusBottomEnd="15dp"
+                app:boxCornerRadiusBottomStart="15dp"
+                app:boxCornerRadiusTopEnd="15dp"
+                app:boxCornerRadiusTopStart="15dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/botonIniciarSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ingresoContraRegistro"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/margenHorizontal"
+                android:layout_marginTop="100dp"
+                android:backgroundTint="@color/colorBotones"
+                android:text="Iniciar Sesion"
+                />
+
+            <Button
+                android:id="@+id/botonRegistrarse"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margenHorizontal"
+                android:text="@string/registro"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/botonIniciarSesion" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
