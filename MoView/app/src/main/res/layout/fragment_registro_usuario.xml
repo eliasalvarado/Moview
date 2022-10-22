@@ -183,8 +183,10 @@
                 android:text="@string/no"
                 app:layout_constraintTop_toBottomOf="@+id/ingresoRepetirContraRegistro"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="@dimen/margenHorizontal" />
+                android:layout_marginEnd="@dimen/margenHorizontal"
+                android:textColor="@color/white"/>
             <RadioButton
+                android:textColor="@color/white"
                 android:id="@+id/radioButtonSi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

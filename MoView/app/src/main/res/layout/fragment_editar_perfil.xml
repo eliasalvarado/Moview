@@ -4,34 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.InisioSesion.InicioSesionFragment"
+    tools:context=".fragments.editarPerfil.EditarPerfilFragment"
     android:background="@color/fondoOscuro">
-
     <ImageView
-        android:id="@+id/logoIniciodeSesion"
-        android:layout_width="275dp"
-        android:layout_height="100dp"
+        android:id="@+id/imagenperfilEditar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginVertical="70dp"
-        app:layout_constraintBottom_toTopOf="@id/carta"/>
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/carta"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/separacion40dp"
+        />
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoIniciodeSesion"
+        app:layout_constraintTop_toBottomOf="@id/imagenperfilEditar"
         android:backgroundTint="@color/fondoClaro"
-        app:cardCornerRadius="25dp">
-
+        android:layout_marginTop="@dimen/separacion40dp">
+        
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/usuarioTextInicioSesion"
+                android:id="@+id/usuarioTextEditarPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/usuario"
@@ -43,14 +41,14 @@
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="@dimen/separacion10dp"
-                android:id="@+id/ingresoUsuarioregistro"
-                app:layout_constraintTop_toBottomOf="@id/usuarioTextInicioSesion"
+                android:id="@+id/ingresoUsuariorEditarPerfil"
+                app:layout_constraintTop_toBottomOf="@id/usuarioTextEditarPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="@dimen/margenHorizontal"
-                android:hint="@string/ingresoUsuario"
+                android:hint="@string/editarUsuario"
                 android:textColorHint="@color/colorTextInputs"
                 app:boxBackgroundColor="@color/fondoOscuro"
                 app:boxCornerRadiusBottomEnd="15dp"
@@ -64,11 +62,11 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
             <TextView
-                android:id="@+id/contraTextRegistro"
+                android:id="@+id/contraTextEditarPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingresoUsuarioregistro"
+                app:layout_constraintTop_toBottomOf="@id/ingresoUsuariorEditarPerfil"
                 android:layout_marginStart="@dimen/margenHorizontal"
                 android:text="@string/contra"
                 android:layout_marginTop="@dimen/separacion10dp"
@@ -77,14 +75,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="@dimen/separacion10dp"
-                android:id="@+id/ingresoContraRegistro"
-                app:layout_constraintTop_toBottomOf="@id/contraTextRegistro"
+                android:id="@+id/ingresoContraEditarPerfil"
+                app:layout_constraintTop_toBottomOf="@id/contraTextEditarPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="@dimen/margenHorizontal"
-                android:hint="@string/ingresoContra"
+                android:hint="@string/editarcontra"
                 android:textColorHint="@color/colorTextInputs"
                 app:boxBackgroundColor="@color/fondoOscuro"
                 app:boxCornerRadiusBottomEnd="15dp"
@@ -97,40 +95,55 @@
                     android:layout_height="wrap_content"
                     />
             </com.google.android.material.textfield.TextInputLayout>
-
             <Button
-                android:id="@+id/botonIniciarSesion"
+                android:id="@+id/botonGuardarCambios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingresoContraRegistro"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginHorizontal="@dimen/margenHorizontal"
-                android:layout_marginTop="100dp"
+                android:layout_marginBottom="@dimen/separacion40dp"
                 android:backgroundTint="@color/colorBotones"
-                android:text="@string/iniciar_sesion"
+                android:text="@string/guardar_cambios"
                 />
-
-            <Button
-                android:id="@+id/botonRegistrarse"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/criticoDeCineTextEditar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margenHorizontal"
-                android:text="@string/registro"
-                android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/margenHorizontal"
+                android:layout_marginTop="@dimen/separacion10dp"
+                android:text="@string/criticoCine"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/botonIniciarSesion" />
+                app:layout_constraintBottom_toTopOf="@id/botonGuardarCambios"
+                android:layout_marginBottom="53dp"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonNoEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/botonGuardarCambios"
+                android:layout_marginBottom="@dimen/separacion40dp"
+                android:layout_marginEnd="@dimen/margenHorizontal"
+                android:textColor="@color/white"/>
+            <RadioButton
+                android:textColor="@color/white"
+                android:id="@+id/radioButtonSiEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/botonGuardarCambios"
+                android:layout_marginBottom="@dimen/separacion40dp"
+                app:layout_constraintEnd_toStartOf="@id/radioButtonNoEditar"
+                android:layout_marginEnd="@dimen/margenHorizontal"
+                android:text="@string/si"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
-
-
-
-
-
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

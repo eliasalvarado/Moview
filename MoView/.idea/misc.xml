@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/drawable/ic_addcoment.xml" value="0.172" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/drawable/ic_happyface.xml" value="0.172" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/drawable/ic_sadface.xml" value="0.172" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_comentario_usuario.xml" value="0.25" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_detalles.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_editar_perfil.xml" value="0.25" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_inicio_sesion.xml" value="0.25" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_registro_usuario.xml" value="0.25" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/app/src/main/res/layout/activity_main.xml" value="0.25" />

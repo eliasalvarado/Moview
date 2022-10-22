@@ -4,4 +4,5 @@
     <dimen name="separacion10dp">10dp</dimen>
     <dimen name="radio">15dp</dimen>
     <dimen name="sizeIcono">30dp</dimen>
+    <dimen name="separacion40dp">40dp</dimen>
 </resources>

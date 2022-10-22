@@ -18,4 +18,12 @@
     <string name="acerca_de">Acerca De</string>
     <string name="reparto">Reparto</string>
     <string name="comentarios">Comentarios</string>
+    <string name="like">Like</string>
+    <string name="dislike">Dislike</string>
+    <string name="comentario">Comentario</string>
+    <string name="publicar">Publicar</string>
+    <string name="editarUsuario">Ingresa tu nuevo usuario</string>
+    <string name="editarcontra">Ingresa tu contraseña (Campo obligatorio)</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="guardar_cambios">Guardar cambios</string>
 </resources>

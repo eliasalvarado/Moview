@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <ImageView
-        android:id="@+id/posterPelicula"
+        android:id="@+id/posterPeliculaDetalles"
         android:layout_width="80dp"
         android:layout_height="120dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,14 +23,25 @@
         android:layout_marginTop="110dp"
         android:layout_marginStart="@dimen/margenHorizontal"
         />
-
+    <ImageButton
+        android:id="@+id/botonBackDetalles"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:layout_marginStart="@dimen/separacion10dp"
+        android:background="@drawable/ic_baseline_circle_24"
+        android:src="@drawable/ic_back"
+        android:padding="10dp"
+        />
 
     <TextView
         android:id="@+id/nombrePelicula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/cartelPeliculaDetalles"
-        app:layout_constraintStart_toEndOf="@id/posterPelicula"
+        app:layout_constraintStart_toEndOf="@id/posterPeliculaDetalles"
         android:layout_marginStart="@dimen/margenHorizontal"
         android:text="Nombre"
         android:textColor="@color/white"
@@ -41,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nombrePelicula"
-        app:layout_constraintStart_toEndOf="@id/posterPelicula"
+        app:layout_constraintStart_toEndOf="@id/posterPeliculaDetalles"
         android:layout_marginStart="@dimen/margenHorizontal"
         android:text="Año - Director"
         android:textColor="@color/white"
@@ -52,7 +63,7 @@
         android:layout_width="@dimen/sizeIcono"
         android:layout_height="@dimen/sizeIcono"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        app:layout_constraintTop_toBottomOf="@id/posterPeliculaDetalles"
         android:src="@drawable/ic_like"
         android:layout_marginTop="@dimen/separacion10dp"
         android:layout_marginStart="50dp"
@@ -62,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/iconoLike"
-        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        app:layout_constraintTop_toBottomOf="@id/posterPeliculaDetalles"
         android:layout_marginTop="@dimen/separacion10dp"
         android:text="##%"
         android:textColor="@color/white"
@@ -77,7 +88,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="@dimen/margenHorizontal"
-        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        app:layout_constraintTop_toBottomOf="@id/posterPeliculaDetalles"
         android:layout_marginTop="@dimen/separacion10dp"
         android:textSize="18sp"
         />
@@ -87,9 +98,10 @@
         android:layout_height="@dimen/sizeIcono"
         android:src="@drawable/ic_baseline_add_box_24"
         app:layout_constraintEnd_toStartOf="@id/calificaPeliculaText"
-        app:layout_constraintTop_toBottomOf="@id/posterPelicula"
+        app:layout_constraintTop_toBottomOf="@id/posterPeliculaDetalles"
         android:layout_marginTop="@dimen/separacion10dp"
         android:layout_marginEnd="@dimen/separacion10dp"
+        android:backgroundTint="@color/fondoOscuro"
         />
 
     <Button
