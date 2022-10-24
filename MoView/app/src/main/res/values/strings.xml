@@ -26,4 +26,8 @@
     <string name="editarcontra">Ingresa tu contraseña (Campo obligatorio)</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="guardar_cambios">Guardar cambios</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="news">News</string>
+    <string name="profile">Profile</string>
 </resources>
