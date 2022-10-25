@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margenHorizontal">20dp</dimen>
+    <dimen name="separacion10dp">10dp</dimen>
+    <dimen name="radio">15dp</dimen>
+    <dimen name="sizeIcono">30dp</dimen>
+    <dimen name="separacion40dp">40dp</dimen>
+    <dimen name="bottom_margin_save">80dp</dimen>
+</resources>

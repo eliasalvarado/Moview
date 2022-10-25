@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/drawable/ic_addcoment.xml" value="0.1585" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/drawable/ic_back.xml" value="0.1585" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.1585" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/drawable/ic_like.xml" value="0.2285" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/drawable/ic_search.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/drawable/search_icon.xml" value="0.249" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/activity_main.xml" value="0.16041666666666668" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/child_recycler_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_comentario_usuario.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_detalles.xml" value="0.4" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_editar_perfil.xml" value="0.23233695652173914" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_home.xml" value="0.190625" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_inicio_sesion.xml" value="0.23233695652173914" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_news.xml" value="0.23233695652173914" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_perfil_critico.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_perfil_usuario.xml" value="0.23233695652173914" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_registro_usuario.xml" value="0.23233695652173914" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/fragment_search.xml" value="0.2076923076923077" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/item_recycler_news.xml" value="0.23233695652173914" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/item_recycler_profileusuario.xml" value="0.23233695652173914" />
+        <entry key="..\:/AndroidStudioProjects/MoView/app/src/main/res/layout/parent_recycler_item.xml" value="0.264" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/drawable/ic_addcoment.xml" value="0.172" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/drawable/ic_happyface.xml" value="0.172" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/drawable/ic_sadface.xml" value="0.172" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_comentario_usuario.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_detalles.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_editar_perfil.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_inicio_sesion.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_news.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_perfil_critico.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_perfil_usuario.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/fragment_registro_usuario.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/layout/item_recycler_news.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/MoView/app/src/main/res/menu/menutoolbar.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/app/src/main/res/layout/fragment_detalles.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/app/src/main/res/layout/fragment_inicio_sesion.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/Proyecto/app/src/main/res/layout/fragment_registro_usuario.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/app/src/main/res/layout/fragment_detalles.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/app/src/main/res/layout/fragment_inicio_sesion.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/app/src/main/res/layout/fragment_registro_usuario.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

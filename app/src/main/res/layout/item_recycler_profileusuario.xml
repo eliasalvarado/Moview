@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="144dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_profileUsuario"
+    android:background="@color/fondoOscuro"
+    android:clickable="true"
+    android:focusable="true">
+    <ImageView
+        android:id="@+id/PosterPeliculaProfile"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/separacion10dp"/>
+    <TextView
+        android:id="@+id/textInfoPelicula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Información de pelicula /serie"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/PosterPeliculaProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="22dp"
+        android:layout_marginStart="@dimen/separacion10dp"
+        />
+    <TextView
+        android:id="@+id/textLikeDislike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/PosterPeliculaProfile"
+        android:layout_marginStart="@dimen/separacion10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="22dp"
+        android:text="Like/Dislike"
+        android:textColor="@color/white"
+        />
+    <ImageView
+        android:id="@+id/iconoLikeDislike"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="@dimen/separacion10dp"
+        app:layout_constraintStart_toEndOf="@id/PosterPeliculaProfile"
+        app:layout_constraintBottom_toTopOf="@id/textLikeDislike"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
