@@ -20,22 +20,19 @@
             app:popUpTo="@id/inicioSesionFragment"
             app:popUpToInclusive="true"/>
     </fragment>
+
     <fragment
         android:id="@+id/registroUsuarioFragment"
         android:name="com.example.moview.fragments.RegistroUsuario.RegistroUsuarioFragment"
         android:label="fragment_registro_usuario"
         tools:layout="@layout/fragment_registro_usuario" >
         <action
-            android:id="@+id/action_registroUsuarioFragment_to_inicioSesionFragment"
-            app:destination="@id/inicioSesionFragment"
-            app:popUpTo="@id/registroUsuarioFragment"
-            app:popUpToInclusive="true"/>
-        <action
             android:id="@+id/action_registroUsuarioFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/registroUsuarioFragment"
             app:popUpToInclusive="true"/>
     </fragment>
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.moview.fragments.Home.HomeFragment"
@@ -48,15 +45,13 @@
             android:id="@+id/action_homeFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_perfilCriticoFragment"
-            app:destination="@id/perfilCriticoFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_perfilUsuarioFragment"
-            app:destination="@id/perfilUsuarioFragment" />
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/perfilFragment" />
         <action
             android:id="@+id/action_homeFragment_to_detallesFragment"
             app:destination="@id/detallesFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.moview.fragments.search.SearchFragment"
@@ -68,7 +63,14 @@
         <action
             android:id="@+id/action_searchFragment_to_detallesFragment"
             app:destination="@id/detallesFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_profileFragment"
+            app:destination="@id/perfilFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.example.moview.fragments.news.NewsFragment"
@@ -78,17 +80,18 @@
             android:id="@+id/action_newsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_newsFragment_to_editarPerfilFragment"
-            app:destination="@id/editarPerfilFragment" />
+            android:id="@+id/action_newsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_newsFragment_to_detallesFragment"
-            app:destination="@id/detallesFragment" />
+            android:id="@+id/action_newsFragment_to_profileFragment"
+            app:destination="@id/perfilFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/perfilCriticoFragment"
-        android:name="com.example.moview.fragments.perfilCritico.PerfilCriticoFragment"
+        android:id="@+id/perfilFragment"
+        android:name="com.example.moview.fragments.perfilCritico.ProfileFragment"
         android:label="fragment_perfil_critico"
-        tools:layout="@layout/fragment_perfil_critico" >
+        tools:layout="@layout/fragment_perfil" >
         <action
             android:id="@+id/action_perfilCriticoFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -98,31 +101,24 @@
         <action
             android:id="@+id/action_perfilCriticoFragment_to_detallesFragment"
             app:destination="@id/detallesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/perfilUsuarioFragment"
-        android:name="com.example.moview.fragments.perfilUsuario.PerfilUsuarioFragment"
-        android:label="fragment_perfil_usuario"
-        tools:layout="@layout/fragment_perfil_usuario" >
         <action
-            android:id="@+id/action_perfilUsuarioFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_perfilFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
         <action
-            android:id="@+id/action_perfilUsuarioFragment_to_detallesFragment"
-            app:destination="@id/detallesFragment" />
+            android:id="@+id/action_perfilFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/editarPerfilFragment"
         android:name="com.example.moview.fragments.editarPerfil.EditarPerfilFragment"
         android:label="fragment_editar_perfil"
         tools:layout="@layout/fragment_editar_perfil" >
         <action
-            android:id="@+id/action_editarPerfilFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
-        <action
-            android:id="@+id/action_editarPerfilFragment_to_perfilCriticoFragment"
-            app:destination="@id/perfilCriticoFragment" />
+            android:id="@+id/action_editarPerfilFragment_to_profileFragment"
+            app:destination="@id/perfilFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/detallesFragment"
         android:name="com.example.moview.fragments.detalles.DetallesFragment"
@@ -132,23 +128,15 @@
             android:id="@+id/action_detallesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_detallesFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
-        <action
             android:id="@+id/action_detallesFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_detallesFragment_to_perfilCriticoFragment"
-            app:destination="@id/perfilCriticoFragment" />
-        <action
-            android:id="@+id/action_detallesFragment_to_perfilUsuarioFragment"
-            app:destination="@id/perfilUsuarioFragment" />
-        <action
-            android:id="@+id/action_detallesFragment_to_comentarioUsuarioFragment2"
-            app:destination="@id/comentarioUsuarioFragment2" />
+            android:id="@+id/action_detallesFragment_to_comentarioUsuarioFragment"
+            app:destination="@id/comentarioUsuarioFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/comentarioUsuarioFragment2"
+        android:id="@+id/comentarioUsuarioFragment"
         android:name="com.example.moview.fragments.comentarioUsuario.comentarioUsuarioFragment"
         android:label="fragment_comentario_usuario"
         tools:layout="@layout/fragment_comentario_usuario" >
@@ -156,4 +144,5 @@
             android:id="@+id/action_comentarioUsuarioFragment2_to_detallesFragment"
             app:destination="@id/detallesFragment" />
     </fragment>
+
 </navigation>
