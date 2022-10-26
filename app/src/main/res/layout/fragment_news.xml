@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.news.NewsFragment"
+    tools:context=".Fragments.news.NewsFragment"
     android:background="@color/fondoOscuro">
+
     <ImageView
         android:id="@+id/logoNews"
         android:layout_width="80dp"
@@ -15,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/separacion10dp"/>
+
     <TextView
         android:id="@+id/proximosEstrenosText"
         android:layout_width="wrap_content"
@@ -23,28 +25,19 @@
         app:layout_constraintTop_toBottomOf="@id/logoNews"
         android:layout_marginTop="20dp"
         android:layout_marginStart="@dimen/separacion10dp"
-        android:text="Próximos estrenos"
+        android:text="@string/proximos_estrenos"
         android:textColor="@color/white"
         />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/navigationbarNews"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/proximosEstrenosText"
         android:layout_marginTop="@dimen/separacion10dp"
         />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationbarNews"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/colorBotones"
-        app:menu="@menu/menutoolbar"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

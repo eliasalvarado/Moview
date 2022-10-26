@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/inicioSesionFragment"
-        android:name="com.example.moview.fragments.InicioSesion.InicioSesionFragment"
+        android:name="com.example.moview.Fragments.InicioSesion.InicioSesionFragment"
         android:label="fragment_inicio_sesion"
         tools:layout="@layout/fragment_inicio_sesion" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/registroUsuarioFragment"
-        android:name="com.example.moview.fragments.RegistroUsuario.RegistroUsuarioFragment"
+        android:name="com.example.moview.Fragments.RegistroUsuario.RegistroUsuarioFragment"
         android:label="fragment_registro_usuario"
         tools:layout="@layout/fragment_registro_usuario" >
         <action
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.moview.fragments.Home.HomeFragment"
+        android:name="com.example.moview.Fragments.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -54,7 +54,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.moview.fragments.search.SearchFragment"
+        android:name="com.example.moview.Fragments.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -73,7 +73,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.moview.fragments.news.NewsFragment"
+        android:name="com.example.moview.Fragments.news.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" >
         <action
@@ -89,7 +89,7 @@
 
     <fragment
         android:id="@+id/perfilFragment"
-        android:name="com.example.moview.fragments.perfilCritico.ProfileFragment"
+        android:name="com.example.moview.Fragments.Profile.ProfileFragment"
         android:label="fragment_perfil_critico"
         tools:layout="@layout/fragment_perfil" >
         <action
@@ -111,7 +111,7 @@
 
     <fragment
         android:id="@+id/editarPerfilFragment"
-        android:name="com.example.moview.fragments.editarPerfil.EditarPerfilFragment"
+        android:name="com.example.moview.Fragments.editarPerfil.EditarPerfilFragment"
         android:label="fragment_editar_perfil"
         tools:layout="@layout/fragment_editar_perfil" >
         <action
@@ -121,7 +121,7 @@
 
     <fragment
         android:id="@+id/detallesFragment"
-        android:name="com.example.moview.fragments.detalles.DetallesFragment"
+        android:name="com.example.moview.Fragments.detalles.DetallesFragment"
         android:label="fragment_detalles"
         tools:layout="@layout/fragment_detalles" >
         <action
@@ -137,7 +137,7 @@
 
     <fragment
         android:id="@+id/comentarioUsuarioFragment"
-        android:name="com.example.moview.fragments.comentarioUsuario.comentarioUsuarioFragment"
+        android:name="com.example.moview.Fragments.comentarioUsuario.comentarioUsuarioFragment"
         android:label="fragment_comentario_usuario"
         tools:layout="@layout/fragment_comentario_usuario" >
         <action

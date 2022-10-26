@@ -1,14 +1,15 @@
-package com.example.moview.fragments.perfilCritico
+package com.example.moview.Fragments.news
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
+import android.view.View
 import androidx.navigation.findNavController
 import com.example.moview.MainActivity
 import com.example.moview.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ProfileFragment : Fragment(R.layout.fragment_perfil) {
+
+class NewsFragment : Fragment(R.layout.fragment_news) {
     private lateinit var bottonNav: BottomNavigationView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -22,9 +23,9 @@ class ProfileFragment : Fragment(R.layout.fragment_perfil) {
     private fun setListeners(){
         bottonNav.setOnItemSelectedListener {
             when(it.itemId) {
-                R.id.search -> requireView().findNavController().navigate(ProfileFragmentDirections.actionPerfilFragmentToSearchFragment())
-                R.id.news -> requireView().findNavController().navigate(ProfileFragmentDirections.actionPerfilFragmentToNewsFragment())
-                R.id.home -> requireView().findNavController().navigate(ProfileFragmentDirections.actionPerfilCriticoFragmentToHomeFragment())
+                R.id.search -> requireView().findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToSearchFragment())
+                R.id.home -> requireView().findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToHomeFragment())
+                R.id.profile -> requireView().findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToProfileFragment())
             }
             true
         }

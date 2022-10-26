@@ -6,4 +6,9 @@
     <dimen name="sizeIcono">30dp</dimen>
     <dimen name="separacion40dp">40dp</dimen>
     <dimen name="bottom_margin_save">80dp</dimen>
+    <dimen name="icon_size_normal">60dp</dimen>
+    <dimen name="icon_size_small">30dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
 </resources>

@@ -1,10 +1,8 @@
-package com.example.moview.fragments.RegistroUsuario
+package com.example.moview.Fragments.RegistroUsuario
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
 import androidx.navigation.findNavController
@@ -38,7 +36,9 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
             }
         }
         createAccountButton.setOnClickListener {
-            requireView().findNavController().navigate(R.id.action_registroUsuarioFragment_to_homeFragment)
+            requireView().findNavController().navigate(
+                RegistroUsuarioFragmentDirections.actionRegistroUsuarioFragmentToHomeFragment()
+            )
         }
     }
 }
