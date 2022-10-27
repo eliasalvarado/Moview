@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_addcoment.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_back.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_baseline_add_box_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_baseline_circle_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_happyface.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_home.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_lapiz.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_like.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_logo1_background.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_logo2_background.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_news.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_profile.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_sadface.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_search.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/ic_verificado.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable-v21/search_icon.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_addcoment.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_back.xml" value="0.117" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_baseline_circle_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_happyface.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_lapiz.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_like.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_logo1_background.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_logo2_background.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_news.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_profile.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_sadface.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_search.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_verificado.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/search_icon.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
