@@ -23,7 +23,7 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         bottonNav.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.search -> requireView().findNavController().navigate(
-                    R.id.action_homeFragment_to_searchFragment
+                    HomeFragmentDirections.actionHomeFragmentToSearchFragment()
                 )
                 R.id.news -> requireView().findNavController().navigate(
                     R.id.action_homeFragment_to_newsFragment
