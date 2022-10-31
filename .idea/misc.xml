@@ -37,10 +37,11 @@
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_search.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_verificado.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/search_icon.xml" value="0.1" />
+        <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/MoView/Moview/app/src/main/res/layout/fragment_detalles.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
