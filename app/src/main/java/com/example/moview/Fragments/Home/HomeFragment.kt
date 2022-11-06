@@ -66,16 +66,11 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
                     HomeFragmentDirections.actionHomeFragmentToSearchFragment()
                 )
                 R.id.news -> requireView().findNavController().navigate(
-                    R.id.action_homeFragment_to_newsFragment
+                    HomeFragmentDirections.actionHomeFragmentToNewsFragment()
                 )
                 R.id.profile -> requireView().findNavController().navigate(
-                    R.id.action_homeFragment_to_profileFragment
+                    HomeFragmentDirections.actionHomeFragmentToProfileFragment()
                 )
-                /*
-                R.id.news -> requireView().findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNewsFragment())
-                R.id.profile -> requireView().findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
-                */
-
             }
             true
         }
