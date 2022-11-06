@@ -59,9 +59,11 @@
                 app:boxCornerRadiusTopStart="@dimen/radio"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/usuarioTextRegistro">
+                app:layout_constraintTop_toBottomOf="@id/usuarioTextRegistro"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:textColorHighlight="@color/colorBotones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
