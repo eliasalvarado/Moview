@@ -33,7 +33,7 @@
             android:id="@+id/recycler_parent_title_type"
             android:text="Películas"
             android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textColor="@color/colorTextInputs"
             android:textSize="15sp"
             android:padding="20dp"/>
 
