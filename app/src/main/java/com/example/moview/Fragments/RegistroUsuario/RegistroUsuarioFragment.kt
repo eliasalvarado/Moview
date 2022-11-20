@@ -35,7 +35,7 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
     private lateinit var contra1: TextInputLayout
     private lateinit var contra2: TextInputLayout
     private var esCritico = false
-    private var permitido : Boolean = false
+    private var permitido : Boolean = true
     private lateinit var repository : UserRepository
     private lateinit var repositoryImg : ImageRepository
 
@@ -93,10 +93,9 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
         }else{
             if(pasword.compareTo(pasword2) == 0){
                 lifecycleScope.launch(Dispatchers.IO){
-                    val comprobacionUser = repository.getUser(usuario)
                     val comprobacionEmail = repository.getUserByEmail(email)
-                    if(comprobacionUser!=null && comprobacionEmail!=null){
-                        imagen = cargarimagen()
+                    if(comprobacionEmail?.size == 0){
+                        //imagen = cargarimagen()
                         permitido =true
                         repository.createUser(
                             user = User(
@@ -116,7 +115,7 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                         RegistroUsuarioFragmentDirections.actionRegistroUsuarioFragmentToHomeFragment()
                     )
                 }else{
-                    Toast.makeText(activity,"El nombre de usuario o correo está en uso",Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity,"El correo está en uso",Toast.LENGTH_LONG).show()
                 }
 
             }else{
