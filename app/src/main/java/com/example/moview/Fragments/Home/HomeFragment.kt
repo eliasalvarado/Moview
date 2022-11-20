@@ -3,6 +3,7 @@ package com.example.moview.Fragments.Home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +13,14 @@ import com.example.moview.Fragments.Adapters.Home.model.CategoryClass
 import com.example.moview.Fragments.Adapters.Home.model.CategoryItem
 import com.example.moview.MainActivity
 import com.example.moview.R
+import com.example.moview.data.Repository.titulo.TituloRepository
+import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
+import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
 import com.example.moview.datasource.api.RetrofitInstance
 import com.example.moview.datasource.model.APIresponse
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,6 +32,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     private lateinit var categoryRecyclerAdapter: CategoryRecyclerAdapter
     private lateinit var list: MutableList<CategoryClass>
     private lateinit var secondaryList: MutableList<CategoryItem>
+    private lateinit var repository: TituloRepository
 
     private val key = "NJvzEz4BNnsCPqmLwIiNtXjuW1jfLW4hTYYr0Prq"
 
@@ -33,6 +40,10 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         super.onViewCreated(view, savedInstanceState)
 
         bottonNav = (activity as MainActivity).getToolBar()
+
+        repository = TituloRepositoryImpl(
+            FirebaseTituloApiImpl(Firebase.firestore)
+        )
 
         instanceData()
         setListeners()
@@ -59,6 +70,14 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         listOfAll.add(CategoryClass("Terror", "Peliculas", itemList))
         listOfAll.add(CategoryClass("Thriller", "Peliculas", itemList))
         list = listOfAll
+
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val peliculas = repository.getByType("peliculas")
+            val series = repository.getByType("series")
+            println("Se han cargado")
+        }
+
     }
 
     private fun setCategoryRecycler(listOfAll: MutableList<CategoryClass>) {
