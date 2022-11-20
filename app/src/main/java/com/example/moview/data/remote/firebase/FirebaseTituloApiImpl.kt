@@ -39,6 +39,7 @@ class FirebaseTituloApiImpl(
     override suspend fun getPeliculasByGender(genero: String): List<TituloDto>? {
         return try {
             val res = db.collection("peliculas").whereEqualTo("genero", genero).get().await()
+
             res?.documents?.map { documentSnapshot ->
                 documentSnapshot.toObject<TituloDto>()!!
             }
@@ -50,6 +51,7 @@ class FirebaseTituloApiImpl(
     override suspend fun getSeriesByGender(genero: String): List<TituloDto>? {
         return try {
             val res = db.collection("series").whereEqualTo("genero", genero).get().await()
+
             res?.documents?.map { documentSnapshot ->
                 documentSnapshot.toObject<TituloDto>()!!
             }

@@ -76,32 +76,44 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         generos.add("Crime")
         generos.add("Comedy")
 
+
+
+
+        val lista: MutableList<Titulo> = ArrayList()
+
         lifecycleScope.launch(Dispatchers.IO) {
-            val titulos: MutableList<CategoryItem> = ArrayList()
             generos.forEach {
                 val pelisGenero = repository.getPeliculasByGender(it)
                 if(pelisGenero != null) {
-                    pelisGenero as MutableList<Titulo>
                     pelisGenero.forEach {
-                        titulos.add(CategoryItem(it.title, it.poster))
+                        lista.add(it)
                     }
-                    listOfAll.add(CategoryClass(it, "Pelicula", titulos))
-                    titulos.clear()
+                    agregarTitulo(lista, it, "Pelicula")
+                    lista.clear()
                 }
             }
+
+            lista.clear()
 
             generos.forEach {
-                val seriesGenero = repository.getSeriesByGender(it) as MutableList<Titulo>
-                seriesGenero.forEach {
-                    titulos.add(CategoryItem(it.title, it.poster))
+                val seriesGenero = repository.getSeriesByGender(it)
+                if(seriesGenero != null) {
+                    seriesGenero.forEach {
+                        lista.add(it)
+                    }
+                    agregarTitulo(lista, it, "Serie")
+                    lista.clear()
                 }
-                listOfAll.add(CategoryClass(it, "Serie", titulos))
-                titulos.clear()
             }
 
+
+
+
             lifecycleScope.launch(Dispatchers.Main) {
-                setCategoryRecycler(listOfAll)
+                setCategoryRecycler(list)
             }
+
+
 
             /*
             val peliculas = repository.getByType("peliculas")
@@ -126,10 +138,20 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
             lifecycleScope.launch(Dispatchers.Main) {
                 setCategoryRecycler(listOfAll)
             }
+
              */
+
             println("Se han cargado")
         }
 
+    }
+
+    private fun agregarTitulo(lista: MutableList<Titulo>, genero: String, tipo: String) {
+        val titulos: MutableList<CategoryItem> = ArrayList()
+        lista.forEach {
+            titulos.add(CategoryItem(it.title, it.poster))
+        }
+        list.add(CategoryClass(genero, tipo, titulos))
     }
 
     private fun setCategoryRecycler(listOfAll: MutableList<CategoryClass>) {
