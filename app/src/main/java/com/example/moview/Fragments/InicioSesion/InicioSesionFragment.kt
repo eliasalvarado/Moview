@@ -62,25 +62,32 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
             val result = repository.getUserByEmail(email)
             if (result == null){
                 permitido = false
+                Toast.makeText(activity,"Ha ocurrido un error inesperado", Toast.LENGTH_LONG).show()
             }else{
-                permitido = true
                 currentUser = result[0]
+                permitido = true
+                comprobarInicioSesion(email, pasword)
             }
         }
+
+
+    }
+
+    private fun comprobarInicioSesion(email: String, pasword:String) {
         if(permitido){
             if(currentUser.pasword.compareTo(pasword)==0){
                 //acceso permitido
-                requireView().findNavController().navigate(
-                    InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
-                )
+                lifecycleScope.launch(Dispatchers.Main) {
+                    requireView().findNavController().navigate(
+                        InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
+                    )
+                }
             }else{
                 Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
             }
         }else{
             Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
         }
-
     }
-
 
 }
