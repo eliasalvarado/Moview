@@ -18,9 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.RecyclerViewItemClickHandler {
     private lateinit var bottonNav: BottomNavigationView
@@ -39,7 +37,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         instanceData()
         setListeners()
         setCategoryRecycler(list)
-        cargarAPI()
+
 
     }
 
@@ -92,21 +90,6 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         println("Se ha presionado el item: "+ item.toString())
     }
 
-    private fun cargarAPI() {
 
-        RetrofitInstance.api.getMovies().enqueue(object: Callback<APIresponse> {
-            override fun onResponse(call: Call<APIresponse>, response: Response<APIresponse>) {
-                if (response.isSuccessful && response.body() != null) {
-                    var moviesListAPI = response.body()!!.titles
-                    println(response.body())
-                }
-            }
-
-            override fun onFailure(call: Call<APIresponse>, t: Throwable) {
-                println("Error")
-            }
-
-        })
-    }
 
 }

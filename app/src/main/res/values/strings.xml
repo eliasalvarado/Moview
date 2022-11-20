@@ -11,6 +11,7 @@
     <string name="criticoCine">¿Eres crítico de Cine?</string>
     <string name="no">No</string>
     <string name="si">Si</string>
+    <string name="usuario">Usuario</string>
     <string name="registro">¿Aún no tienes cuenta? registrate aquí</string>
     <string name="crearCuenta">Crear Cuenta</string>
     <string name="calificaPelicula">Califica esta película</string>
