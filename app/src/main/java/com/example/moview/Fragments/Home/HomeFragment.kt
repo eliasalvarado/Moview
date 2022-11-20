@@ -15,6 +15,7 @@ import com.example.moview.MainActivity
 import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
+import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
 import com.example.moview.datasource.api.RetrofitInstance
 import com.example.moview.datasource.model.APIresponse
@@ -48,8 +49,6 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         instanceData()
         setListeners()
         setCategoryRecycler(list)
-
-
     }
 
     private fun instanceData() {
@@ -71,10 +70,63 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         listOfAll.add(CategoryClass("Thriller", "Peliculas", itemList))
         list = listOfAll
 
+        val generos: MutableList<String> = ArrayList()
+        generos.add("Thriller")
+        generos.add("Action")
+        generos.add("Crime")
+        generos.add("Comedy")
 
         lifecycleScope.launch(Dispatchers.IO) {
+            val titulos: MutableList<CategoryItem> = ArrayList()
+            generos.forEach {
+                val pelisGenero = repository.getPeliculasByGender(it)
+                if(pelisGenero != null) {
+                    pelisGenero as MutableList<Titulo>
+                    pelisGenero.forEach {
+                        titulos.add(CategoryItem(it.title, it.poster))
+                    }
+                    listOfAll.add(CategoryClass(it, "Pelicula", titulos))
+                    titulos.clear()
+                }
+            }
+
+            generos.forEach {
+                val seriesGenero = repository.getSeriesByGender(it) as MutableList<Titulo>
+                seriesGenero.forEach {
+                    titulos.add(CategoryItem(it.title, it.poster))
+                }
+                listOfAll.add(CategoryClass(it, "Serie", titulos))
+                titulos.clear()
+            }
+
+            lifecycleScope.launch(Dispatchers.Main) {
+                setCategoryRecycler(listOfAll)
+            }
+
+            /*
             val peliculas = repository.getByType("peliculas")
             val series = repository.getByType("series")
+
+            val prueba: MutableList<CategoryItem> = ArrayList()
+            if (peliculas != null) {
+                peliculas.forEach {
+                    prueba.add(CategoryItem(it.title, it.poster))
+                }
+                listOfAll.add(CategoryClass("Prueba", "Peliculas", prueba))
+            }
+
+            val pruebaSeries: MutableList<CategoryItem> = ArrayList()
+            if (series != null) {
+                series.forEach {
+                    pruebaSeries.add(CategoryItem(it.title, it.poster))
+                }
+                listOfAll.add(CategoryClass("Prueba2", "Series", pruebaSeries))
+            }
+
+            lifecycleScope.launch(Dispatchers.Main) {
+                setCategoryRecycler(listOfAll)
+            }
+             */
             println("Se han cargado")
         }
 

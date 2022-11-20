@@ -3,6 +3,7 @@ package com.example.moview.data.local.entity
 import com.example.moview.data.remote.dto.TituloDto
 
 data class Titulo(
+    var id: String,
     var banner: String,
     var comentarios: List<Comentario>,
     var fecha_estreno: String,
@@ -17,6 +18,7 @@ data class Titulo(
 )
 
 fun Titulo.maptoDto(): TituloDto = TituloDto(
+    id = id,
     banner = banner,
     comentarios = comentarios,
     fecha_estreno = fecha_estreno,

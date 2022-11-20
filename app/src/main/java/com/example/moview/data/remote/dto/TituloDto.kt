@@ -5,6 +5,7 @@ import com.example.moview.data.local.entity.Persona
 import com.example.moview.data.local.entity.Titulo
 
 data class TituloDto(
+    var id: String,
     var banner: String = "",
     var comentarios: List<Comentario> = listOf(),
     var fecha_estreno: String = "",
@@ -19,6 +20,7 @@ data class TituloDto(
 )
 
 fun TituloDto.maptoEntity(): Titulo = Titulo(
+    id = id,
     banner = banner,
     comentarios = comentarios,
     fecha_estreno = fecha_estreno,

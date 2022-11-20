@@ -1,6 +1,5 @@
 package com.example.moview.data.remote.firebase
 
-import android.util.Log
 import com.example.moview.data.remote.api.TituloApi
 import com.example.moview.data.remote.dto.TituloDto
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,10 +25,33 @@ class FirebaseTituloApiImpl(
 
     override suspend fun getByType(type: String): List<TituloDto>? {
         return try {
-            val collection = db.collection(type).get().await()
+            val res = db.collection(type).orderBy("title").get().await()
 
-            collection?.map { documentSnapshot ->
-                documentSnapshot.toObject<TituloDto>()
+            res?.documents?.map { documentSnapshot ->
+                documentSnapshot.toObject<TituloDto>()!!
+            }
+
+        } catch (e: Exception) {
+            return null
+        }
+    }
+
+    override suspend fun getPeliculasByGender(genero: String): List<TituloDto>? {
+        return try {
+            val res = db.collection("peliculas").whereEqualTo("genero", genero).get().await()
+            res?.documents?.map { documentSnapshot ->
+                documentSnapshot.toObject<TituloDto>()!!
+            }
+        } catch (e: Exception) {
+            return null
+        }
+    }
+
+    override suspend fun getSeriesByGender(genero: String): List<TituloDto>? {
+        return try {
+            val res = db.collection("series").whereEqualTo("genero", genero).get().await()
+            res?.documents?.map { documentSnapshot ->
+                documentSnapshot.toObject<TituloDto>()!!
             }
         } catch (e: Exception) {
             return null

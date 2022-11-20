@@ -13,9 +13,25 @@ class TituloRepositoryImpl(
     }
 
     override suspend fun getByType(type: String): List<Titulo>? {
-        val filteredPlaces = api.getByType(type)
-        filteredPlaces?.apply {
-            return filteredPlaces.map { TituloDto -> TituloDto.maptoEntity() }
+        val filteredTitles = api.getByType(type)
+        filteredTitles?.apply {
+            return filteredTitles.map { TituloDto -> TituloDto.maptoEntity() }
+        }
+        return null
+    }
+
+    override suspend fun getPeliculasByGender(genero: String): List<Titulo>? {
+        val filteredTitles = api.getPeliculasByGender(genero)
+        filteredTitles?.apply {
+            return filteredTitles.map { TituloDto -> TituloDto.maptoEntity() }
+        }
+        return null
+    }
+
+    override suspend fun getSeriesByGender(genero: String): List<Titulo>? {
+        val filteredTitles = api.getSeriesByGender(genero)
+        filteredTitles?.apply {
+            return filteredTitles.map { TituloDto -> TituloDto.maptoEntity() }
         }
         return null
     }
