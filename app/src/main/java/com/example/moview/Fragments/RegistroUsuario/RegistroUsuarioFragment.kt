@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.moview.R
+import com.example.moview.data.Repository.image.ImageRepositoryImpl
+import com.example.moview.data.Repository.user.UserRepository
+import com.example.moview.data.Repository.user.UserRepositoryImpl
+import com.example.moview.data.local.entity.Image
 import com.example.moview.data.local.entity.User
+import com.example.moview.data.remote.firebase.FirebaseImageApiImpl
 import com.example.moview.data.remote.firebase.FirebaseUserApiImpl
-import com.example.moview.data.repository.auth.user.UserRepository
-import com.example.moview.data.repository.auth.user.UserRepositoryImpl
+import com.example.moview.data.remote.firebase.image.ImageRepository
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -34,11 +37,15 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
     private var esCritico = false
     private var permitido : Boolean = false
     private lateinit var repository : UserRepository
+    private lateinit var repositoryImg : ImageRepository
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         repository = UserRepositoryImpl(
             FirebaseUserApiImpl(Firebase.firestore)
+        )
+        repositoryImg = ImageRepositoryImpl(
+            FirebaseImageApiImpl(Firebase.firestore)
         )
         view.apply {
             yesOpt = findViewById(R.id.radioButtonSi)
@@ -80,6 +87,7 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
         val email = correo.editText!!.text.toString()
         val pasword = contra1.editText!!.text.toString()
         val pasword2 = contra2.editText!!.text.toString()
+        var imagen = ""
         if (usuario == "" || email == "" || pasword== "" || pasword2==""){
             Toast.makeText(activity,"Por favor llene todos los campos",Toast.LENGTH_LONG).show()
         }else{
@@ -87,7 +95,8 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                 lifecycleScope.launch(Dispatchers.IO){
                     val comprobacionUser = repository.getUser(usuario)
                     val comprobacionEmail = repository.getUserByEmail(email)
-                    if(comprobacionUser!=null || comprobacionEmail!=null){
+                    if(comprobacionUser!=null && comprobacionEmail!=null){
+                        imagen = cargarimagen()
                         permitido =true
                         repository.createUser(
                             user = User(
@@ -95,7 +104,7 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                                 email = email,
                                 pasword = pasword,
                                 critico = esCritico,
-                                perfil = ""
+                                perfil = imagen
                             )
                         )
                     }else{
@@ -115,6 +124,16 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
             }
 
         }
+    }
+
+    private fun cargarimagen():String {
+        val num = (0..30).random()
+        val id = num.toString()
+        var imagenPerfil : Image? = null
+        lifecycleScope.launch(Dispatchers.IO){
+            imagenPerfil = repositoryImg.getImage(id)
+        }
+        return imagenPerfil!!.imagen
     }
 
 

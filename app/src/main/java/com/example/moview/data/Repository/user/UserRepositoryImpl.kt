@@ -1,4 +1,4 @@
-package com.example.moview.data.repository.auth.user
+package com.example.moview.data.Repository.user
 
 import com.example.moview.data.local.entity.User
 import com.example.moview.data.local.entity.maoToDto

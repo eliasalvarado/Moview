@@ -5,15 +5,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.clearFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.room.Room
 import com.example.moview.R
+import com.example.moview.data.Repository.user.UserRepository
+import com.example.moview.data.Repository.user.UserRepositoryImpl
 import com.example.moview.data.local.entity.User
 import com.example.moview.data.remote.firebase.FirebaseUserApiImpl
-import com.example.moview.data.repository.auth.user.UserRepository
-import com.example.moview.data.repository.auth.user.UserRepositoryImpl
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -49,9 +47,7 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
             val contra = passInput.editText!!.text.toString()
 
             iniciarsesion(name, contra)
-            requireView().findNavController().navigate(
-                InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
-            )
+
         }
         signInButton.setOnClickListener {
 
@@ -61,9 +57,9 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
         }
     }
 
-    private fun iniciarsesion(user: String, pasword:String) {
+    private fun iniciarsesion(email: String, pasword:String) {
         lifecycleScope.launch(Dispatchers.IO){
-            val result = repository.getUser(user)
+            val result = repository.getUserByEmail(email)
             if (result == null){
                 permitido = false
             }else{
@@ -74,6 +70,9 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
         if(permitido){
             if(currentUser.pasword.compareTo(pasword)==0){
                 //acceso permitido
+                requireView().findNavController().navigate(
+                    InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
+                )
             }else{
                 Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
             }

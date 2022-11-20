@@ -4,7 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="contra">Contraseña</string>
     <string name="ingresoUsuario">Ingresa tu usuario</string>
-    <string name="usuario">Usuario</string>
     <string name="ingresoContra">Ingresa tu contraseña</string>
     <string name="correo">Correo electrónico</string>
     <string name="ingresoCorreo">Ingresa tu correo electrónico</string>
