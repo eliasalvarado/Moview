@@ -8,8 +8,8 @@ import com.example.moview.data.remote.firebase.image.ImageRepository
 class ImageRepositoryImpl(
     private val api: ImageApi
 ) :ImageRepository{
-    override suspend fun getImage(id: String): Image? {
+    override suspend fun getImage(id: String): Image {
         val dto = api.getById(id)
-        return dto?.maptoEntity()
+        return dto.maptoEntity()
     }
 }

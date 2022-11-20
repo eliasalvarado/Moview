@@ -38,6 +38,8 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
     private var permitido : Boolean = true
     private lateinit var repository : UserRepository
     private lateinit var repositoryImg : ImageRepository
+    private lateinit var imagenPerfil : Image
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -98,13 +100,12 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                 if(permitido){
                     val num = (0..30).random()
                     val id = num.toString()
-                    var imagenPerfil : Image? = null
+
+
+
                     lifecycleScope.launch(Dispatchers.IO){
                         imagenPerfil = repositoryImg.getImage(id)
-                    }
-                    val imagen = imagenPerfil!!.imagen
-                    lifecycleScope.launch(Dispatchers.IO){
-
+                        var imagen = imagenPerfil.imagen
                         repository.createUser(
                             user = User(
                                 user = usuario,
@@ -114,6 +115,13 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                                 perfil = imagen
                             )
                         )
+                        val currentUser : User = User(
+                            user = usuario,
+                            email = email,
+                            pasword = pasword,
+                            critico = esCritico,
+                            perfil = imagen
+                        )
                         lifecycleScope.launch(Dispatchers.Main){
                             requireView().findNavController().navigate(
                                 RegistroUsuarioFragmentDirections.actionRegistroUsuarioFragmentToHomeFragment()
@@ -121,11 +129,14 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                         }
                     }
                 }else{
-                    Toast.makeText(activity,"El correo está en uso",Toast.LENGTH_LONG).show()
+                    lifecycleScope.launch(Dispatchers.Main){
+                        Toast.makeText(activity,"El correo está en uso",Toast.LENGTH_LONG).show()
+                    }
                 }
-
             }else{
-                Toast.makeText(activity,"Las contraseñas no coinciden",Toast.LENGTH_LONG).show()
+                lifecycleScope.launch(Dispatchers.Main){
+                    Toast.makeText(activity,"Las contraseñas no coinciden",Toast.LENGTH_LONG).show()
+                }
             }
 
         }
