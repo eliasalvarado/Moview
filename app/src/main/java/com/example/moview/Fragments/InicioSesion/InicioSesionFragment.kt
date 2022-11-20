@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
@@ -60,14 +61,14 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
     private fun iniciarsesion(email: String, pasword:String) {
         lifecycleScope.launch(Dispatchers.IO){
             val result = repository.getUserByEmail(email)
-            if (result == null){
+            if (result!!.size == 0){
                 permitido = false
-                Toast.makeText(activity,"Ha ocurrido un error inesperado", Toast.LENGTH_LONG).show()
+                //Toast.makeText(activity,"Ha ocurrido un error inesperado", Toast.LENGTH_LONG).show()
             }else{
                 currentUser = result[0]
                 permitido = true
-                comprobarInicioSesion(email, pasword)
             }
+            comprobarInicioSesion(email, pasword)
         }
 
 
@@ -83,10 +84,14 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
                     )
                 }
             }else{
-                Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
+                lifecycleScope.launch(Dispatchers.Main){
+                    Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
+                }
             }
         }else{
-            Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
+            lifecycleScope.launch(Dispatchers.Main){
+                Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
+            }
         }
     }
 

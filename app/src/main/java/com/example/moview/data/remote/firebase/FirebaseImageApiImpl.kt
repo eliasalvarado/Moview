@@ -9,13 +9,10 @@ import kotlinx.coroutines.tasks.await
 class FirebaseImageApiImpl(
     private val db : FirebaseFirestore
 ) :ImageApi {
-    override suspend fun getById(id: String): ImageDto? {
-        return try{
-            val document = db.collection("imagenes").document(id).get().await()
-            document.toObject<ImageDto>()
-        }catch (e : Exception){
-            null
-        }
+    override suspend fun getById(id: String): ImageDto {
+
+        val document = db.collection("imagenes").document(id).get().await()
+        return document.toObject<ImageDto>()!!
 
     }
 }
