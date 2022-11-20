@@ -49,7 +49,6 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     }
 
     private fun instanceData() {
-
         val itemList: MutableList<CategoryItem> = ArrayList()
         itemList.add(CategoryItem("Breaking Bad 1", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
         itemList.add(CategoryItem("Breaking Bad 2", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
@@ -60,13 +59,11 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
 
         list = listOfAll
 
-
         val generosPelis: MutableList<String> = ArrayList()
         generosPelis.add("Thriller")
         generosPelis.add("Action")
         generosPelis.add("Crime")
         generosPelis.add("Comedy")
-
 
         val generosSeries: MutableList<String> = ArrayList()
         generosSeries.add("Drama")
@@ -75,8 +72,6 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         generosSeries.add("Adventure")
         generosSeries.add("Documentary")
         generosSeries.add("Mystery")
-
-
 
         val lista: MutableList<Titulo> = ArrayList()
         lifecycleScope.launch(Dispatchers.IO) {
@@ -109,34 +104,6 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
             lifecycleScope.launch(Dispatchers.Main) {
                 setCategoryRecycler(list)
             }
-
-
-
-            /*
-            val peliculas = repository.getByType("peliculas")
-            val series = repository.getByType("series")
-
-            val prueba: MutableList<CategoryItem> = ArrayList()
-            if (peliculas != null) {
-                peliculas.forEach {
-                    prueba.add(CategoryItem(it.title, it.poster))
-                }
-                listOfAll.add(CategoryClass("Prueba", "Peliculas", prueba))
-            }
-
-            val pruebaSeries: MutableList<CategoryItem> = ArrayList()
-            if (series != null) {
-                series.forEach {
-                    pruebaSeries.add(CategoryItem(it.title, it.poster))
-                }
-                listOfAll.add(CategoryClass("Prueba2", "Series", pruebaSeries))
-            }
-
-            lifecycleScope.launch(Dispatchers.Main) {
-                setCategoryRecycler(listOfAll)
-            }
-
-             */
 
             println("Se han cargado")
         }
