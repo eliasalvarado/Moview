@@ -87,16 +87,24 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
         val email = correo.editText!!.text.toString()
         val pasword = contra1.editText!!.text.toString()
         val pasword2 = contra2.editText!!.text.toString()
-        var imagen = ""
         if (usuario == "" || email == "" || pasword== "" || pasword2==""){
             Toast.makeText(activity,"Por favor llene todos los campos",Toast.LENGTH_LONG).show()
         }else{
             if(pasword.compareTo(pasword2) == 0){
                 lifecycleScope.launch(Dispatchers.IO){
                     val comprobacionEmail = repository.getUserByEmail(email)
-                    if(comprobacionEmail?.size == 0){
-                        //imagen = cargarimagen()
-                        permitido =true
+                    permitido = comprobacionEmail!!.isEmpty()
+                }
+                if(permitido){
+                    val num = (0..30).random()
+                    val id = num.toString()
+                    var imagenPerfil : Image? = null
+                    lifecycleScope.launch(Dispatchers.IO){
+                        imagenPerfil = repositoryImg.getImage(id)
+                    }
+                    val imagen = imagenPerfil!!.imagen
+                    lifecycleScope.launch(Dispatchers.IO){
+
                         repository.createUser(
                             user = User(
                                 user = usuario,
@@ -106,14 +114,12 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                                 perfil = imagen
                             )
                         )
-                    }else{
-                        permitido=false
+                        lifecycleScope.launch(Dispatchers.Main){
+                            requireView().findNavController().navigate(
+                                RegistroUsuarioFragmentDirections.actionRegistroUsuarioFragmentToHomeFragment()
+                            )
+                        }
                     }
-                }
-                if(permitido){
-                    requireView().findNavController().navigate(
-                        RegistroUsuarioFragmentDirections.actionRegistroUsuarioFragmentToHomeFragment()
-                    )
                 }else{
                     Toast.makeText(activity,"El correo está en uso",Toast.LENGTH_LONG).show()
                 }
@@ -124,16 +130,5 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
 
         }
     }
-
-    private fun cargarimagen():String {
-        val num = (0..30).random()
-        val id = num.toString()
-        var imagenPerfil : Image? = null
-        lifecycleScope.launch(Dispatchers.IO){
-            imagenPerfil = repositoryImg.getImage(id)
-        }
-        return imagenPerfil!!.imagen
-    }
-
 
 }
