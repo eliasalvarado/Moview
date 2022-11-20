@@ -17,12 +17,9 @@ import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
-import com.example.moview.datasource.api.RetrofitInstance
-import com.example.moview.datasource.model.APIresponse
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -52,37 +49,38 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     }
 
     private fun instanceData() {
+
         val itemList: MutableList<CategoryItem> = ArrayList()
         itemList.add(CategoryItem("Breaking Bad 1", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
         itemList.add(CategoryItem("Breaking Bad 2", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
-        itemList.add(CategoryItem("Breaking Bad 3", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
-        itemList.add(CategoryItem("Breaking Bad 4", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
-        itemList.add(CategoryItem("Breaking Bad 5", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
-        itemList.add(CategoryItem("Breaking Bad 6", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
+
         val listOfAll: MutableList<CategoryClass> = ArrayList()
         listOfAll.add(CategoryClass("Romance", "Series", itemList))
         listOfAll.add(CategoryClass("Acción", "Series", itemList))
-        listOfAll.add(CategoryClass("Suspenso", "Series", itemList))
-        listOfAll.add(CategoryClass("Romance", "Peliculas", itemList))
-        listOfAll.add(CategoryClass("Acción", "Peliculas", itemList))
-        listOfAll.add(CategoryClass("Suspenso", "Peliculas", itemList))
-        listOfAll.add(CategoryClass("Terror", "Peliculas", itemList))
-        listOfAll.add(CategoryClass("Thriller", "Peliculas", itemList))
+
         list = listOfAll
 
-        val generos: MutableList<String> = ArrayList()
-        generos.add("Thriller")
-        generos.add("Action")
-        generos.add("Crime")
-        generos.add("Comedy")
 
+        val generosPelis: MutableList<String> = ArrayList()
+        generosPelis.add("Thriller")
+        generosPelis.add("Action")
+        generosPelis.add("Crime")
+        generosPelis.add("Comedy")
+
+
+        val generosSeries: MutableList<String> = ArrayList()
+        generosSeries.add("Drama")
+        generosSeries.add("Western")
+        generosSeries.add("Action")
+        generosSeries.add("Adventure")
+        generosSeries.add("Documentary")
+        generosSeries.add("Mystery")
 
 
 
         val lista: MutableList<Titulo> = ArrayList()
-
         lifecycleScope.launch(Dispatchers.IO) {
-            generos.forEach {
+            generosPelis.forEach {
                 val pelisGenero = repository.getPeliculasByGender(it)
                 if(pelisGenero != null) {
                     pelisGenero.forEach {
@@ -95,19 +93,18 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
 
             lista.clear()
 
-            generos.forEach {
+            generosSeries.forEach {
                 val seriesGenero = repository.getSeriesByGender(it)
-                if(seriesGenero != null) {
-                    seriesGenero.forEach {
-                        lista.add(it)
+                if (seriesGenero != null) {
+                    if(seriesGenero.isNotEmpty()) {
+                        seriesGenero.forEach {
+                            lista.add(it)
+                        }
+                        agregarTitulo(lista, it, "Serie")
+                        lista.clear()
                     }
-                    agregarTitulo(lista, it, "Serie")
-                    lista.clear()
                 }
             }
-
-
-
 
             lifecycleScope.launch(Dispatchers.Main) {
                 setCategoryRecycler(list)
