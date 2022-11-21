@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.moview.R
@@ -12,6 +13,7 @@ import com.example.moview.data.Repository.user.UserRepository
 import com.example.moview.data.Repository.user.UserRepositoryImpl
 import com.example.moview.data.local.entity.User
 import com.example.moview.data.remote.firebase.FirebaseUserApiImpl
+import com.example.moview.viewModels.UsersViewModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -27,6 +29,7 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
     private lateinit var repository : UserRepository
     private var permitido = true
     private lateinit var currentUser : User
+    val viewModel: UsersViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,6 +42,7 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
         repository = UserRepositoryImpl(
             FirebaseUserApiImpl(Firebase.firestore)
         )
+
         setListeners()
     }
 
@@ -82,6 +86,9 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
                     requireView().findNavController().navigate(
                         InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
                     )
+                    //aqui view model
+                    viewModel.asignarValores(currentUser.user,currentUser.email,
+                        currentUser.pasword,currentUser.critico,currentUser.perfil)
                 }
             }else{
                 lifecycleScope.launch(Dispatchers.Main){
