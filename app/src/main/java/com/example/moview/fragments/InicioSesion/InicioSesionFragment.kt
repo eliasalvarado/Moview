@@ -1,4 +1,4 @@
-package com.example.moview.fragments.InicioSesion
+package com.example.moview.Fragments.InicioSesion
 
 import android.os.Bundle
 import android.view.View
@@ -27,10 +27,14 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
 
     private fun setListeners() {
         loginButton.setOnClickListener{
-            requireView().findNavController().navigate(R.id.action_inicioSesionFragment_to_homeFragment)
+            requireView().findNavController().navigate(
+                InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
+            )
         }
         signInButton.setOnClickListener {
-            requireView().findNavController().navigate(R.id.action_inicioSesionFragment_to_registroUsuarioFragment)
+            requireView().findNavController().navigate(
+                InicioSesionFragmentDirections.actionInicioSesionFragmentToRegistroUsuarioFragment()
+            )
         }
     }
 

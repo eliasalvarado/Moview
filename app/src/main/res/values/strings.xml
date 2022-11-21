@@ -31,4 +31,9 @@
     <string name="news">News</string>
     <string name="profile">Profile</string>
     <string name="child_title">Titulo de la pelicula</string>
+    <string name="tus_calificaciones">Tus calificaciones</string>
+    <string name="busqueda">Búsqueda...</string>
+    <string name="proximos_estrenos">Próximos estrenos</string>
+    <string name="peliculas">Películas</string>
+    <string name="series">Series</string>
 </resources>

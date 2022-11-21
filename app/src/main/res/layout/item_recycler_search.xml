@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:id="@+id/layout_itemSearch"
+    android:background="@color/fondoOscuro"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/image_itemCharacter_category"
+        android:layout_width="@dimen/icon_size_normal"
+        android:layout_height="@dimen/icon_size_normal"
+        android:layout_marginStart="@dimen/margin_medium"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/text_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        tools:text="Daredevil (2015) -"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/image_itemCharacter_category"
+        app:layout_constraintEnd_toStartOf="@id/text_item_type"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text_item_ranking"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        />
+
+    <TextView
+        android:id="@+id/text_item_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Serie"
+        android:textColor="@color/colorTextInputs"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        app:layout_constraintStart_toEndOf="@id/text_item_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text_item_ranking"
+        />
+
+    <ImageView
+        android:id="@+id/image_item_ranking"
+        android:layout_width="@dimen/icon_size_small"
+        android:layout_height="@dimen/icon_size_small"
+        android:layout_marginStart="@dimen/margin_large"
+        app:srcCompat="@drawable/ic_like"
+        app:layout_constraintStart_toEndOf="@id/image_itemCharacter_category"
+        app:layout_constraintEnd_toStartOf="@id/text_item_ranking"
+        app:layout_constraintTop_toBottomOf="@id/text_item_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:tint="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/text_item_ranking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        tools:text="86 %"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/text_item_name"
+        app:layout_constraintStart_toEndOf="@id/image_item_ranking"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
