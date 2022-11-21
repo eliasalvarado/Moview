@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "475959859364",
+    "project_id": "moview-bd174",
+    "storage_bucket": "moview-bd174.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475959859364:android:a04fc8372cb0c979f1ee31",
+        "android_client_info": {
+          "package_name": "com.example.moview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475959859364-u2n1c8t2srrp3rogorbf4shh28c14fle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv5gd8WWdoHcQY8kiewUH0p-0MOFx-zsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475959859364-u2n1c8t2srrp3rogorbf4shh28c14fle.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

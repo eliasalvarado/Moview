@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottonNav = findViewById(R.id.navigationbar)
 
-
         val navHostController = supportFragmentManager.findFragmentById(
             R.id.containerViewprincipal
         ) as NavHostFragment

@@ -125,13 +125,16 @@
                 app:boxCornerRadiusBottomStart="@dimen/radio"
                 app:boxCornerRadiusTopEnd="@dimen/radio"
                 app:boxCornerRadiusTopStart="@dimen/radio"
+                app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/contraTextRegistro">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -158,13 +161,16 @@
                 app:boxCornerRadiusBottomStart="@dimen/radio"
                 app:boxCornerRadiusTopEnd="@dimen/radio"
                 app:boxCornerRadiusTopStart="@dimen/radio"
+                app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/repetirContraRegistro">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -183,6 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/no"
+                android:checked="true"
                 app:layout_constraintTop_toBottomOf="@+id/ingresoRepetirContraRegistro"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="@dimen/margenHorizontal"
