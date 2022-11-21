@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="298dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/news_item"
+    android:background="@color/fondoOscuro">
+
+    <ImageView
+        android:layout_width="135dp"
+        android:layout_height="228dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="35dp"
+        android:id="@+id/item_news_image"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_news_title"
+        app:layout_constraintTop_toTopOf="@id/item_news_image"
+        app:layout_constraintStart_toEndOf="@id/item_news_image"
+        android:text="Titulo de la pelicula"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginStart="@dimen/separacion10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/item_news_title"
+        app:layout_constraintStart_toStartOf="@id/item_news_title"
+        android:text="21/10/22"
+        android:textColor="@color/white"
+        android:id="@+id/item_news_date"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_news_desc"
+        android:textColor="@color/white"
+        android:text="Descripcion"
+        android:textSize="@dimen/separacion10dp"
+        app:layout_constraintTop_toBottomOf="@id/item_news_date"
+        app:layout_constraintStart_toStartOf="@id/item_news_date"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

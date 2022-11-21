@@ -13,7 +13,8 @@
         android:layout_height="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#7F000000"/>
     <ImageView
         android:id="@+id/posterPeliculaDetalles"
         android:layout_width="80dp"
@@ -25,15 +26,14 @@
         />
     <ImageButton
         android:id="@+id/botonBackDetalles"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/separacion10dp"
         android:layout_marginStart="@dimen/separacion10dp"
         android:background="@drawable/ic_baseline_circle_24"
         android:src="@drawable/ic_back"
-        android:padding="10dp"
         />
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_marginStart="@dimen/margenHorizontal"
         android:text="Nombre"
         android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textSize="27sp"
         />
     <TextView
         android:id="@+id/datosPelicula"
@@ -105,82 +105,44 @@
         android:backgroundTint="@color/fondoOscuro"
         />
 
-    <Button
-        android:id="@+id/botonAcercaDeDetalles"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:id="@+id/tab_layout"
         android:layout_marginTop="@dimen/separacion10dp"
-        android:text="@string/acerca_de"
-        app:layout_constraintEnd_toStartOf="@id/botonRepartoDetalles"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/calificaPeliculaText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iconoLike" />
-    <Button
-        android:id="@+id/botonRepartoDetalles"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/botonAcercaDeDetalles"
-        app:layout_constraintTop_toBottomOf="@id/iconoLike"
-        app:layout_constraintEnd_toStartOf="@id/botonComentariosDetalles"
-        android:text="@string/reparto"
-        android:layout_marginTop="@dimen/separacion10dp"
-        />
-    <Button
-        android:id="@+id/botonComentariosDetalles"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/iconoLike"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/botonRepartoDetalles"
-        android:text="@string/comentarios"
-        android:textSize="13dp"
-        android:layout_marginTop="@dimen/separacion10dp"
-        />
+        android:backgroundTint="@color/fondoOscuro"
+        app:tabSelectedTextColor="@color/main_light_green"
+        app:tabIndicatorColor="@color/main_light_green"
+        app:tabTextColor="@color/main_light_green">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/botonRepartoDetalles"
-        android:backgroundTint="@color/fondoClaro"
-        >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tituloDetalles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="Titulo"
-                android:textSize="30sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="@dimen/separacion10dp"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tituloDetalles"
-                android:textColor="@color/white"
-                android:padding="25dp"
-                />
+            android:layout_height="wrap_content"
+            android:text="@string/acerca_de"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reparto"/>
 
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/comentarios"/>
+    </com.google.android.material.tabs.TabLayout>
 
-
-
-
-    </androidx.cardview.widget.CardView>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/details_view_pager"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
