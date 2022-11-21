@@ -64,6 +64,12 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         generosPelis.add("Action")
         generosPelis.add("Crime")
         generosPelis.add("Comedy")
+        generosPelis.add("Horror")
+        generosPelis.add("Adventure")
+        generosPelis.add("Science Fiction")
+        generosPelis.add("Fantasy")
+        generosPelis.add("Romance")
+
 
         val generosSeries: MutableList<String> = ArrayList()
         generosSeries.add("Drama")
