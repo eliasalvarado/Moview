@@ -29,11 +29,8 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     private lateinit var categoryRecycler: RecyclerView
     private lateinit var categoryRecyclerAdapter: CategoryRecyclerAdapter
     private lateinit var list: MutableList<CategoryClass>
-    private lateinit var secondaryList: MutableList<CategoryItem>
     private lateinit var repository: TituloRepository
-
-
-    private val key = "NJvzEz4BNnsCPqmLwIiNtXjuW1jfLW4hTYYr0Prq"
+    
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
