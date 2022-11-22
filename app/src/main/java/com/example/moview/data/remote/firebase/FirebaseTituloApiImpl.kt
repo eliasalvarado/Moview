@@ -1,6 +1,7 @@
 package com.example.moview.data.remote.firebase
 
 import com.example.moview.data.remote.api.TituloApi
+import com.example.moview.data.remote.dto.ComentarioDto
 import com.example.moview.data.remote.dto.TituloDto
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -64,18 +65,37 @@ class FirebaseTituloApiImpl(
     override suspend fun actualizarPuntajeTitulo(
         id: String,
         nuevosDatos: Map<String, MutableList<Boolean>>
-    ): String {
+    ): Boolean {
         return try {
             val document = db.collection("peliculas").document(id)
             document.update(nuevosDatos)
-            "Tu comentario ha sido realizado con éxito."
+            true
         } catch (e: Exception) {
             return try {
-                val document = db.collection("peliculas").document(id)
+                val document = db.collection("series").document(id)
                 document.update(nuevosDatos)
-                "Tu comentario ha sido realizado con éxito."
+                true
             } catch (e: Exception) {
-                return e.message ?: "Error"
+                return false
+            }
+        }
+    }
+
+    override suspend fun actualizarComentariosTitulo(
+        id: String,
+        nuevoComentario: ComentarioDto
+    ): Boolean {
+        return try {
+            val document = db.collection("peliculas").document(id).collection("comentarios")
+            document.add(nuevoComentario).await()
+            true
+        } catch (e: Exception) {
+            return try {
+                val document = db.collection("series").document(id).collection("comentarios")
+                document.add(nuevoComentario).await()
+                true
+            } catch (e: Exception) {
+                return false
             }
         }
     }

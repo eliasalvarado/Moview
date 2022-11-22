@@ -80,11 +80,11 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
         )
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val mensaje = repository.actualizarPuntajeTitulo(tituloActual.id, datosActuales)
+            val comentario = repository.actualizarPuntajeTitulo(tituloActual.id, datosActuales)
             lifecycleScope.launch(Dispatchers.Main) {
                 Toast.makeText(
                     requireContext(),
-                    mensaje,
+                    "Tu comentario ha sido publicado con éxito",
                     Toast.LENGTH_LONG
                 ).show()
             }
