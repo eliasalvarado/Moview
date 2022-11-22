@@ -6,19 +6,22 @@ import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.room.Room
 import com.example.moview.R
 import com.example.moview.data.Repository.image.ImageRepositoryImpl
 import com.example.moview.data.Repository.user.UserRepository
 import com.example.moview.data.Repository.user.UserRepositoryImpl
 import com.example.moview.data.local.entity.Image
 import com.example.moview.data.local.entity.User
+import com.example.moview.data.local.source.Database
 import com.example.moview.data.remote.firebase.FirebaseImageApiImpl
 import com.example.moview.data.remote.firebase.FirebaseUserApiImpl
 import com.example.moview.data.remote.firebase.image.ImageRepository
-import com.example.moview.viewModels.UsersViewModel
+import com.example.moview.datasource.model.UserTable
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -41,7 +44,7 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
     private lateinit var repository : UserRepository
     private lateinit var repositoryImg : ImageRepository
     private lateinit var imagenPerfil : Image
-    private val userViewModel: UsersViewModel by activityViewModels()
+    private lateinit var database: Database
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,7 +63,11 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
             contra1 = findViewById(R.id.ingresoContraRegistro)
             contra2 = findViewById(R.id.ingresoRepetirContraRegistro)
         }
-
+        database = Room.databaseBuilder(
+            requireContext(),
+            Database::class.java,
+            "dbname"
+        ).build()
         setListeners()
 
     }
@@ -121,10 +128,10 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                             critico = esCritico,
                             perfil = imagen
                         )
-                        //aqui viewmodel
+                        //db
+                        agregarADb(currentUser)
+
                         lifecycleScope.launch(Dispatchers.Main){
-                            userViewModel.setUser(currentUser.user,currentUser.email,currentUser.pasword,
-                                currentUser.critico,currentUser.perfil)
                             requireView().findNavController().navigate(
                                 RegistroUsuarioFragmentDirections.actionRegistroUsuarioFragmentToHomeFragment()
                             )
@@ -141,6 +148,20 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                 }
             }
 
+        }
+    }
+
+    private fun agregarADb(user: User){
+        val LogedUser = UserTable(
+            id = 1,
+            user = user.user,
+            email = user.email,
+            pasword = user.pasword,
+            critico = user.critico,
+            perfil = user.perfil
+        )
+        CoroutineScope(Dispatchers.IO).launch {
+            database.userDao().insert(LogedUser)
         }
     }
 

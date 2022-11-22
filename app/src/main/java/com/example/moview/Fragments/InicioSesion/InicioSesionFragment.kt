@@ -1,27 +1,33 @@
 package com.example.moview.Fragments.InicioSesion
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.example.moview.R
 import com.example.moview.data.Repository.user.UserRepository
 import com.example.moview.data.Repository.user.UserRepositoryImpl
 import com.example.moview.data.local.entity.User
 import com.example.moview.data.remote.firebase.FirebaseUserApiImpl
-import com.example.moview.viewModels.UsersViewModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.room.Room
+import com.example.moview.data.local.source.Database
+import com.example.moview.datasource.model.UserTable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.first
 
 class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
     private lateinit var nameUserInput: TextInputLayout
@@ -31,7 +37,9 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
     private lateinit var repository : UserRepository
     private var permitido = true
     private lateinit var currentUser : User
-    private val userViewModel: UsersViewModel by activityViewModels()
+    private lateinit var database: Database
+    private lateinit var loggedUser : List<UserTable>
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,8 +52,23 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
         repository = UserRepositoryImpl(
             FirebaseUserApiImpl(Firebase.firestore)
         )
-
-        setListeners()
+        database = Room.databaseBuilder(
+            requireContext(),
+            Database::class.java,
+            "dbname"
+        ).build()
+        var logeado = false
+        CoroutineScope(Dispatchers.IO).launch{
+            loggedUser = database.userDao().getTheUser()
+            if(loggedUser != null)
+                logeado = true
+        }
+        if (logeado){
+            requireView().findNavController().navigate(
+                InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
+            )
+        }else
+            setListeners()
     }
 
     private fun setListeners() {
@@ -88,10 +111,8 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
                     requireView().findNavController().navigate(
                         InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
                     )
-                    //aqui view model
-                    userViewModel.viewModelScope.launch {
-                        userViewModel.setName(currentUser.user)
-                    }
+                    //db
+                    agregarADb(currentUser)
                 }
             }else{
                 lifecycleScope.launch(Dispatchers.Main){
@@ -102,6 +123,20 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
             lifecycleScope.launch(Dispatchers.Main){
                 Toast.makeText(activity,"Nombre de usuario o contrasela invalido", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun agregarADb(user: User){
+        val LogedUser = UserTable(
+            id = 1,
+            user = user.user,
+            email = user.email,
+            pasword = user.pasword,
+            critico = user.critico,
+            perfil = user.perfil
+        )
+        CoroutineScope(Dispatchers.IO).launch {
+            database.userDao().insert(LogedUser)
         }
     }
 
