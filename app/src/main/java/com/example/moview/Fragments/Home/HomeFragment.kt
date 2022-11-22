@@ -11,7 +11,7 @@ import com.example.moview.Fragments.Adapters.Home.adapter.CategoryItemAdapter
 import com.example.moview.Fragments.Adapters.Home.adapter.CategoryRecyclerAdapter
 import com.example.moview.Fragments.Adapters.Home.model.CategoryClass
 import com.example.moview.Fragments.Adapters.Home.model.CategoryItem
-import com.example.moview.MainActivity
+import com.example.moview.Activities.MainActivity
 import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl

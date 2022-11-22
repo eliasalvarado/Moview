@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.example.moview.MainActivity
+import com.example.moview.Activities.MainActivity
 import com.example.moview.R
 import com.example.moview.data.local.entity.TituloEstreno
 import com.example.moview.data.local.entity.WatchModeDb

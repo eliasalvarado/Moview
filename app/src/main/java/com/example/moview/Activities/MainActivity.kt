@@ -1,10 +1,11 @@
-package com.example.moview
+package com.example.moview.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.moview.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
