@@ -41,13 +41,16 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
             FirebaseTituloApiImpl(Firebase.firestore)
         )
 
+        list = mutableListOf()
+
 
         instanceData()
         setListeners()
-        setCategoryRecycler(list)
+        //setCategoryRecycler(list)
     }
 
     private fun instanceData() {
+        /*
         val itemList: MutableList<CategoryItem> = ArrayList()
         itemList.add(CategoryItem("Breaking Bad 1", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
         itemList.add(CategoryItem("Breaking Bad 2", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
@@ -57,6 +60,8 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         listOfAll.add(CategoryClass("Acción", "Series", itemList))
 
         list = listOfAll
+
+         */
 
         val generosPelis: MutableList<String> = ArrayList()
         generosPelis.add("Thriller")
