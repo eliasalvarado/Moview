@@ -97,12 +97,9 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                     val comprobacionEmail = repository.getUserByEmail(email)
                     permitido = comprobacionEmail!!.isEmpty()
                 }
-                if(permitido){
+                if(!permitido){
                     val num = (0..30).random()
                     val id = num.toString()
-
-
-
                     lifecycleScope.launch(Dispatchers.IO){
                         imagenPerfil = repositoryImg.getImage(id)
                         var imagen = imagenPerfil.imagen
