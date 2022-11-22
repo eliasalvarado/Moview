@@ -13,6 +13,8 @@
         <action
             android:id="@+id/action_inicioSesionFragment_to_registroUsuarioFragment"
             app:destination="@id/registroUsuarioFragment"
+            app:popUpTo="@id/inicioSesionFragment"
+            app:popUpToInclusive="true"
             />
         <action
             android:id="@+id/action_inicioSesionFragment_to_homeFragment"
@@ -40,16 +42,24 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_homeFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
+            app:destination="@id/newsFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/perfilFragment" />
+            app:destination="@id/perfilFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_homeFragment_to_detallesFragment"
-            app:destination="@id/detallesFragment" />
+            app:destination="@id/detallesFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -59,16 +69,24 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_searchFragment_to_detallesFragment"
-            app:destination="@id/detallesFragment" />
+            app:destination="@id/detallesFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_searchFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
+            app:destination="@id/newsFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_searchFragment_to_profileFragment"
-            app:destination="@id/perfilFragment" />
+            app:destination="@id/perfilFragment"
+            app:popUpTo="@id/searchFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -78,13 +96,19 @@
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_newsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/newsFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_newsFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/newsFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_newsFragment_to_profileFragment"
-            app:destination="@id/perfilFragment" />
+            app:destination="@id/perfilFragment"
+            app:popUpTo="@id/newsFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -94,19 +118,29 @@
         tools:layout="@layout/fragment_perfil" >
         <action
             android:id="@+id/action_perfilCriticoFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/perfilFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_perfilCriticoFragment_to_editarPerfilFragment"
-            app:destination="@id/editarPerfilFragment" />
+            app:destination="@id/editarPerfilFragment"
+            app:popUpTo="@id/perfilFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_perfilCriticoFragment_to_detallesFragment"
-            app:destination="@id/detallesFragment" />
+            app:destination="@id/detallesFragment"
+            app:popUpTo="@id/perfilFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_perfilFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
+            app:destination="@id/newsFragment"
+            app:popUpTo="@id/perfilFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_perfilFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/perfilFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -116,7 +150,9 @@
         tools:layout="@layout/fragment_editar_perfil" >
         <action
             android:id="@+id/action_editarPerfilFragment_to_profileFragment"
-            app:destination="@id/perfilFragment" />
+            app:destination="@id/perfilFragment"
+            app:popUpTo="@id/editarPerfilFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -126,13 +162,19 @@
         tools:layout="@layout/fragment_detalles" >
         <action
             android:id="@+id/action_detallesFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/detallesFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_detallesFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:popUpTo="@id/detallesFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_detallesFragment_to_comentarioUsuarioFragment"
-            app:destination="@id/comentarioUsuarioFragment" />
+            app:destination="@id/comentarioUsuarioFragment"
+            app:popUpTo="@id/detallesFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
