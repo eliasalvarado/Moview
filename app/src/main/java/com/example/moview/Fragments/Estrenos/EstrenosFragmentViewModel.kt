@@ -1,4 +1,4 @@
-package com.example.moview.Fragments.Home
+package com.example.moview.Fragments.Estrenos
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,23 +12,23 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class HomeFragmentViewModel @Inject constructor(
+class EstrenosFragmentViewModel @Inject constructor(
     private val repository: EstrenoRepository
 ): ViewModel() {
 
-    private val _uiState: MutableStateFlow<HomeFragmentUiState> =
-        MutableStateFlow(HomeFragmentUiState.Default)
-    val uiState: StateFlow<HomeFragmentUiState> = _uiState
+    private val _uiState: MutableStateFlow<EstrenosFragmentUiState> =
+        MutableStateFlow(EstrenosFragmentUiState.Default)
+    val uiState: StateFlow<EstrenosFragmentUiState> = _uiState
 
     fun getEstrenos() {
         viewModelScope.launch {
-            _uiState.value = HomeFragmentUiState.Loading
+            _uiState.value = EstrenosFragmentUiState.Loading
             when(val estrenosResult = repository.getEstrenos()) {
                 is Resource.Error -> {
-                    _uiState.value = HomeFragmentUiState.Error(estrenosResult.message ?: "")
+                    _uiState.value = EstrenosFragmentUiState.Error(estrenosResult.message ?: "")
                 }
                 is Resource.Success -> {
-                    _uiState.value = HomeFragmentUiState.Success(estrenosResult.data ?: listOf())
+                    _uiState.value = EstrenosFragmentUiState.Success(estrenosResult.data ?: listOf())
                 }
             }
         }

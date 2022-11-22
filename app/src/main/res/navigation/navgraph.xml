@@ -73,7 +73,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.moview.Fragments.news.NewsFragment"
+        android:name="com.example.moview.Fragments.Estrenos.EstrenosFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" >
         <action

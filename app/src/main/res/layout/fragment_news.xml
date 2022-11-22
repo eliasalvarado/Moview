@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.news.NewsFragment"
+    tools:context=".Fragments.news.EstrenosFragment"
     android:background="@color/fondoOscuro">
 
     <ImageView
@@ -29,15 +29,29 @@
         android:textColor="@color/white"
         />
 
+    <ProgressBar
+        android:id="@+id/progress_estrenos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="gone"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/news_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/proximosEstrenosText"
         android:layout_marginTop="@dimen/separacion10dp"
-        android:id="@+id/news_recycler"
+        tools:listitem="@layout/item_recycler_news"
+        tools:visibility="visible"
         />
 
 

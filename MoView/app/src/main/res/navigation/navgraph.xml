@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/inicioSesionFragment"
-        android:name="com.example.moview.fragments.InisioSesion.InicioSesionFragment"
+        android:name="com.example.moview.Fragments.InisioSesion.InicioSesionFragment"
         android:label="fragment_inicio_sesion"
         tools:layout="@layout/fragment_inicio_sesion" />
 </navigation>
