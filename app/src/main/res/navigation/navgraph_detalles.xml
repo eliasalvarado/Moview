@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph_detalles"
+    app:startDestination="@id/sinopsisFragment">
+
+    <fragment
+        android:id="@+id/sinopsisFragment"
+        android:name="com.example.moview.Fragments.detalles.Fragments.SinopsisFragment"
+        android:label="fragment_sinopsis"
+        tools:layout="@layout/fragment_sinopsis" >
+
+        <action
+            android:id="@+id/action_inicioSesionFragment_to_crewFragment"
+            app:destination="@id/crewFragment" />
+        <action
+            android:id="@+id/action_inicioSesionFragment_to_commentsFragment"
+            app:destination="@id/commentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentsFragment"
+        android:name="com.example.moview.Fragments.detalles.Fragments.CommentsFragment"
+        android:label="fragment_comments"
+        tools:layout="@layout/fragment_comments" >
+        <action
+            android:id="@+id/action_commentsFragment_to_inicioSesionFragment"
+            app:destination="@id/inicioSesionFragment" />
+        <action
+            android:id="@+id/action_commentsFragment_to_crewFragment"
+            app:destination="@id/crewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crewFragment"
+        android:name="com.example.moview.Fragments.detalles.Fragments.CrewFragment"
+        android:label="fragment_crew"
+        tools:layout="@layout/fragment_crew" >
+        <action
+            android:id="@+id/action_crewFragment_to_inicioSesionFragment"
+            app:destination="@id/inicioSesionFragment" />
+        <action
+            android:id="@+id/action_crewFragment_to_commentsFragment"
+            app:destination="@id/commentsFragment" />
+    </fragment>
+
+
+</navigation>

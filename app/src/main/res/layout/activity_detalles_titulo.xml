@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.detalles.DetallesFragment"
     android:background="@color/fondoOscuro"
-    >
+    tools:context=".Activities.DetallesTitulo">
 
     <ImageView
         android:id="@+id/cartelPeliculaDetalles"
@@ -15,7 +14,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="#7F000000"/>
+        android:background="#7F000000"
+        tools:srcCompat="@tools:sample/avatars"
+        android:alpha=".50"
+        />
+
     <ImageView
         android:id="@+id/posterPeliculaDetalles"
         android:layout_width="80dp"
@@ -24,7 +27,9 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="110dp"
         android:layout_marginStart="@dimen/margenHorizontal"
+        tools:srcCompat="@tools:sample/avatars"
         />
+
     <ImageButton
         android:id="@+id/botonBackDetalles"
         android:layout_width="35dp"
@@ -44,10 +49,11 @@
         app:layout_constraintTop_toBottomOf="@id/cartelPeliculaDetalles"
         app:layout_constraintStart_toEndOf="@id/posterPeliculaDetalles"
         android:layout_marginStart="@dimen/margenHorizontal"
-        android:text="Nombre"
+        tools:text="Nombre"
         android:textColor="@color/white"
         android:textSize="27sp"
         />
+
     <TextView
         android:id="@+id/datosPelicula"
         android:layout_width="wrap_content"
@@ -55,10 +61,11 @@
         app:layout_constraintTop_toBottomOf="@id/nombrePelicula"
         app:layout_constraintStart_toEndOf="@id/posterPeliculaDetalles"
         android:layout_marginStart="@dimen/margenHorizontal"
-        android:text="Año - Director"
+        tools:text="Año - Director"
         android:textColor="@color/white"
-        android:textSize="15dp"
+        android:textSize="15sp"
         />
+
     <ImageView
         android:id="@+id/iconoLike"
         android:layout_width="@dimen/sizeIcono"
@@ -69,6 +76,7 @@
         android:layout_marginTop="@dimen/separacion10dp"
         android:layout_marginStart="50dp"
         />
+
     <TextView
         android:id="@+id/porcentajeDeLikesDetalle"
         android:layout_width="wrap_content"
@@ -76,11 +84,12 @@
         app:layout_constraintStart_toEndOf="@id/iconoLike"
         app:layout_constraintTop_toTopOf="@id/iconoLike"
         app:layout_constraintBottom_toBottomOf="@id/iconoLike"
-        android:text="##%"
+        tools:text="##%"
         android:textColor="@color/main_light_green"
         android:textSize="20sp"
         android:layout_marginStart="5dp"
         />
+
     <TextView
         android:id="@+id/calificaPeliculaText"
         android:layout_width="wrap_content"
@@ -94,6 +103,7 @@
         app:layout_constraintBottom_toBottomOf="@id/botonCalificaPeliculaDetalles"
         android:textSize="18sp"
         />
+
     <ImageButton
         android:id="@+id/botonCalificaPeliculaDetalles"
         android:layout_width="@dimen/sizeIcono"
@@ -106,44 +116,50 @@
         android:backgroundTint="@color/fondoOscuro"
         />
 
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:id="@+id/tab_layout_DetallesActivity"
-        android:layout_marginTop="@dimen/separacion10dp"
+    <Button
+        android:id="@+id/sinopsisFragmentDetalles"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/calificaPeliculaText"
+        android:text="@string/acerca_de"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/fondoOscuro"
-        app:tabSelectedTextColor="@color/main_light_green"
-        app:tabIndicatorColor="@color/main_light_green"
-        app:tabTextColor="@color/main_light_green">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/acerca_de"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/reparto"/>
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/comentarios"/>
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/details_view_pager"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout_DetallesActivity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iconoLike"
+        app:layout_constraintEnd_toStartOf="@id/repartoFragmentDetalles"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:background="@color/teal_200"
         />
 
+    <Button
+        android:id="@+id/repartoFragmentDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reparto"
+        android:layout_marginTop="@dimen/separacion10dp"
+        app:layout_constraintStart_toEndOf="@id/sinopsisFragmentDetalles"
+        app:layout_constraintTop_toBottomOf="@id/iconoLike"
+        app:layout_constraintEnd_toStartOf="@id/comentariosFragmentDetalles"/>
+
+    <Button
+        android:id="@+id/comentariosFragmentDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comentarios"
+        android:layout_marginTop="@dimen/separacion10dp"
+        app:layout_constraintStart_toEndOf="@id/repartoFragmentDetalles"
+        app:layout_constraintTop_toBottomOf="@id/iconoLike"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer_DetallesTituloActivity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sinopsisFragmentDetalles"
+        app:navGraph = "@navigation/navgraph_detalles"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
