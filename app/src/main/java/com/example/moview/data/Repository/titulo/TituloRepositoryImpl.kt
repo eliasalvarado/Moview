@@ -1,9 +1,10 @@
 package com.example.moview.data.Repository.titulo
 
+import com.example.moview.data.local.entity.Comentario
 import com.example.moview.data.local.entity.Titulo
+import com.example.moview.data.local.entity.maptoEntity
 import com.example.moview.data.remote.api.TituloApi
 import com.example.moview.data.remote.dto.maptoEntity
-import java.util.*
 
 class TituloRepositoryImpl(
     private val api: TituloApi
@@ -37,7 +38,17 @@ class TituloRepositoryImpl(
         return null
     }
 
-    override suspend fun actualizarTitulo(id: String, nuevosDatos: Map<String, Objects>): String {
-        return api.actualizarTitulo(id, nuevosDatos)
+    override suspend fun actualizarPuntajeTitulo(
+        id: String,
+        nuevosDatos: Map<String, MutableList<Boolean>>
+    ): Boolean {
+        return api.actualizarPuntajeTitulo(id, nuevosDatos)
+    }
+
+    override suspend fun actualizarComentariosTitulo(
+        id: String,
+        nuevoComentario: Comentario
+    ): Boolean {
+        return api.actualizarComentariosTitulo(id, nuevoComentario.maptoEntity())
     }
 }

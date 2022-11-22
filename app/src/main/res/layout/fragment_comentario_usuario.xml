@@ -7,45 +7,20 @@
     tools:context=".Fragments.comentarioUsuario.comentarioUsuarioFragment"
     android:background="@color/fondoOscuro"
     >
-    <ImageView
-        android:id="@+id/cartelPeliculaComentarioUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/posterPeliculaComentarioUsuario"
-        android:layout_width="80dp"
-        android:layout_height="120dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="110dp"
-        android:layout_marginStart="@dimen/margenHorizontal"
-        />
-    <ImageButton
-        android:id="@+id/botonBackComentarios"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/separacion10dp"
-        android:layout_marginStart="@dimen/separacion10dp"
-        android:background="@drawable/ic_baseline_circle_24"
-        android:src="@drawable/ic_back"
-        android:padding="10dp"
-        />
+
 
     <TextView
-        android:id="@+id/nombrePelicula"
+        android:id="@+id/textviewPreguntaTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cartelPeliculaComentarioUsuario"
-        app:layout_constraintStart_toEndOf="@id/posterPeliculaComentarioUsuario"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/separacion10dp"
         android:layout_marginStart="@dimen/margenHorizontal"
-        android:text="Nombre"
+        android:text="@string/preguntaComentarioTitulo"
         android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textSize="20sp"
         />
 
     <ImageButton
@@ -56,20 +31,23 @@
         android:backgroundTint="@color/fondoOscuro"
         android:src="@drawable/ic_happyface"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/posterPeliculaComentarioUsuario"
+        app:layout_constraintTop_toBottomOf="@id/textviewPreguntaTitulo"
         app:layout_constraintEnd_toStartOf="@id/botonsadfaceComentario"
         />
+
     <ImageButton
         android:id="@+id/botonsadfaceComentario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/botonhappyfaceComentario"
-        app:layout_constraintTop_toBottomOf="@id/posterPeliculaComentarioUsuario"
+        app:layout_constraintTop_toBottomOf="@id/textviewPreguntaTitulo"
         android:layout_marginTop="@dimen/separacion10dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_sadface"
         android:backgroundTint="@color/fondoOscuro"
+
         />
+
     <TextView
         android:layout_marginStart="5dp"
         android:id="@+id/liketextComentario"
@@ -81,6 +59,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/disliketextComentario"
         />
+
     <TextView
         android:id="@+id/disliketextComentario"
         android:layout_width="wrap_content"
@@ -92,6 +71,7 @@
         app:layout_constraintStart_toEndOf="@id/liketextComentario"
         android:layout_marginStart="20dp"
         />
+
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -109,24 +89,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/ingresoComentario"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margenHorizontal"
-                android:layout_marginTop="@dimen/margenHorizontal"
+                android:layout_marginTop="@dimen/separacion10dp"
                 android:hint="@string/comentario"
                 android:textColorHint="@color/colorTextInputs"
                 app:boxBackgroundColor="@color/fondoOscuro"
-                app:boxCornerRadiusBottomEnd="@dimen/radio"
-                app:boxCornerRadiusBottomStart="@dimen/radio"
-                app:boxCornerRadiusTopEnd="@dimen/radio"
-                app:boxCornerRadiusTopStart="@dimen/radio"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/botonPublicarComentario"
-                android:layout_marginBottom="@dimen/separacion10dp"
+
+
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="@color/white"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,7 +119,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="@dimen/margenHorizontal"
-                app:layout_constraintTop_toBottomOf="@id/ingresoComentario"
+
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

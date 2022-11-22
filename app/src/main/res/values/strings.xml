@@ -18,8 +18,8 @@
     <string name="acerca_de">Sinopsis</string>
     <string name="reparto">Reparto</string>
     <string name="comentarios">Comentarios</string>
-    <string name="like">Like</string>
-    <string name="dislike">Dislike</string>
+    <string name="like">Muy buena</string>
+    <string name="dislike">Pésima</string>
     <string name="comentario">Comentario</string>
     <string name="publicar">Publicar</string>
     <string name="editarUsuario">Ingresa tu nuevo usuario</string>
@@ -37,4 +37,5 @@
     <string name="peliculas">Películas</string>
     <string name="series">Series</string>
     <string name="sinopsis">Sinopsis</string>
+    <string name="preguntaComentarioTitulo">¿Cómo le pareció la película/serie?</string>
 </resources>
