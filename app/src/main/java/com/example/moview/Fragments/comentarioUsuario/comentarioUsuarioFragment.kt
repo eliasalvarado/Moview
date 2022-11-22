@@ -63,8 +63,8 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
             leGusta = true
             calificacionSeleccionada = true
             lifecycleScope.launch {
-                buttonLike.setBackgroundColor(resources.getColor(R.color.teal_700))
-                buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonLike.alpha = 1F
+                buttonDislike.alpha = 0.50F
             }
         }
 
@@ -72,13 +72,21 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
             leGusta = false
             calificacionSeleccionada = true
             lifecycleScope.launch {
-                buttonLike.setBackgroundColor(resources.getColor(R.color.teal_700))
-                buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonLike.alpha = 0.50F
+                buttonDislike.alpha = 1F
             }
         }
 
         buttonPublicarcomentario.setOnClickListener() {
-            publicarComentario()
+            if(calificacionSeleccionada) {
+                publicarComentario()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Por favor, seleccione una calificación para la película/serie",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.moview.Activities
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -27,6 +28,7 @@ class DetallesTitulo : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var banner: ImageView
     private lateinit var poster: ImageView
+    private lateinit var buttonTrailer: ImageButton
     private lateinit var buttomBack: ImageButton
     private lateinit var buttonCalificar: ImageButton
     private lateinit var nombreTitulo: TextView
@@ -46,6 +48,7 @@ class DetallesTitulo : AppCompatActivity() {
 
         banner = findViewById(R.id.cartelPeliculaDetalles)
         poster = findViewById(R.id.posterPeliculaDetalles)
+        buttonTrailer =  findViewById(R.id.imgageButtonPlayActivityDestalles)
         buttomBack = findViewById(R.id.botonBackDetalles)
         buttonCalificar = findViewById(R.id.botonCalificaPeliculaDetalles)
         nombreTitulo = findViewById(R.id.textviewPreguntaTitulo)
@@ -72,12 +75,13 @@ class DetallesTitulo : AppCompatActivity() {
     }
 
     private fun inicializarDatos(id: String) {
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.Main) {
             buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
             buttonSinopsis.setBackgroundColor(resources.getColor(R.color.teal_700))
             buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
             buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
         }
+
         lifecycleScope.launch(Dispatchers.IO) {
             val titulo = repository.getById(id = id)
             if(titulo != null) {
@@ -122,6 +126,11 @@ class DetallesTitulo : AppCompatActivity() {
 
 
     private fun setListeners() {
+        buttonTrailer.setOnClickListener() {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(tituloActual.trailer))
+            startActivity(intent)
+        }
+
         buttonSinopsis.setOnClickListener() {
             lifecycleScope.launch {
                 navController.navigate(R.id.sinopsisFragment)
