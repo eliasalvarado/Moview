@@ -57,18 +57,18 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
             Database::class.java,
             "dbname"
         ).build()
-        var logeado = false
+
         CoroutineScope(Dispatchers.IO).launch{
             loggedUser = database.userDao().getTheUser()
-            if(loggedUser != null)
-                logeado = true
+            if(loggedUser.isNotEmpty()){
+                CoroutineScope(Dispatchers.Main).launch {
+                    requireView().findNavController().navigate(
+                        InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
+                    )
+                }
+            }
         }
-        if (logeado){
-            requireView().findNavController().navigate(
-                InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
-            )
-        }else
-            setListeners()
+        setListeners()
     }
 
     private fun setListeners() {

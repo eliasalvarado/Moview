@@ -141,6 +141,9 @@
             app:destination="@id/searchFragment"
             app:popUpTo="@id/perfilFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_perfilFragment_to_inicioSesionFragment"
+            app:destination="@id/inicioSesionFragment" />
     </fragment>
 
     <fragment
