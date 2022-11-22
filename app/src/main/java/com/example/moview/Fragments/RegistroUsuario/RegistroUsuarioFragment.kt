@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.moview.R
@@ -17,6 +18,7 @@ import com.example.moview.data.local.entity.User
 import com.example.moview.data.remote.firebase.FirebaseImageApiImpl
 import com.example.moview.data.remote.firebase.FirebaseUserApiImpl
 import com.example.moview.data.remote.firebase.image.ImageRepository
+import com.example.moview.viewModels.UsersViewModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -39,7 +41,7 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
     private lateinit var repository : UserRepository
     private lateinit var repositoryImg : ImageRepository
     private lateinit var imagenPerfil : Image
-
+    private val userViewModel: UsersViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -97,7 +99,7 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                     val comprobacionEmail = repository.getUserByEmail(email)
                     permitido = comprobacionEmail!!.isEmpty()
                 }
-                if(!permitido){
+                if(permitido){
                     val num = (0..30).random()
                     val id = num.toString()
                     lifecycleScope.launch(Dispatchers.IO){
@@ -119,7 +121,10 @@ class RegistroUsuarioFragment : Fragment(R.layout.fragment_registro_usuario) {
                             critico = esCritico,
                             perfil = imagen
                         )
+                        //aqui viewmodel
                         lifecycleScope.launch(Dispatchers.Main){
+                            userViewModel.setUser(currentUser.user,currentUser.email,currentUser.pasword,
+                                currentUser.critico,currentUser.perfil)
                             requireView().findNavController().navigate(
                                 RegistroUsuarioFragmentDirections.actionRegistroUsuarioFragmentToHomeFragment()
                             )

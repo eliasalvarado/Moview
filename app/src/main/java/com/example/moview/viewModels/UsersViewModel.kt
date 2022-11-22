@@ -1,28 +1,40 @@
 package com.example.moview.viewModels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
-class UsersViewModel : ViewModel(){
+class UsersViewModel : ViewModel() {
 
-    private var _user = ""
-    private var _email = ""
-    private var _pasword =""
-    private var _critico = true
-    private var _perfil = ""
+    private val _user = MutableLiveData<String>("")
+    val user : LiveData<String> = _user
+    private val _email = MutableLiveData<String>("")
+    val email : LiveData<String> = _email
+    private val _pasword = MutableLiveData<String>("")
+    val pasword : LiveData<String> = _pasword
+    private val _critico = MutableLiveData<Boolean>(true)
+    val critico : LiveData<Boolean> = _critico
+    private val _perfil = MutableLiveData<String>("")
+    val perfil : LiveData<String> = _perfil
 
-    val user: String get() = _user
-    val email: String get() = _email
-    val pasword: String get() = _pasword
-    val critico: Boolean get() = _critico
-    val perfil: String get() = _perfil
-
-    fun asignarValores(user:String,email: String, pasword: String, critico:Boolean, perfil:String ){
-        _user = user
-        _email = email
-        _pasword = pasword
-        _critico = critico
-        _perfil = perfil
+    fun setUser(user: String, email: String, pasword: String, critico: Boolean, perfil:String){
+        _user.value = user
+        _email.value = email
+        _pasword.value = pasword
+        _critico.value = critico
+        _perfil.value = perfil
     }
-
+    fun setName(user:String){
+        _user.value = user
+    }
+    fun getUser():String{
+        return _user.value.toString()
+    }
+    fun getProfile():String{
+        return  _perfil.value.toString()
+    }
+    fun getCritico():Boolean{
+        return _user.value.isNullOrBlank()
+    }
 }

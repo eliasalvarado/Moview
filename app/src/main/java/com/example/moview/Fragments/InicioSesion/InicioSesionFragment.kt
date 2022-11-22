@@ -5,8 +5,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.example.moview.R
 import com.example.moview.data.Repository.user.UserRepository
@@ -29,7 +31,7 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
     private lateinit var repository : UserRepository
     private var permitido = true
     private lateinit var currentUser : User
-    val viewModel: UsersViewModel by viewModels()
+    private val userViewModel: UsersViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -87,8 +89,9 @@ class InicioSesionFragment : Fragment(R.layout.fragment_inicio_sesion) {
                         InicioSesionFragmentDirections.actionInicioSesionFragmentToHomeFragment()
                     )
                     //aqui view model
-                    viewModel.asignarValores(currentUser.user,currentUser.email,
-                        currentUser.pasword,currentUser.critico,currentUser.perfil)
+                    userViewModel.viewModelScope.launch {
+                        userViewModel.setName(currentUser.user)
+                    }
                 }
             }else{
                 lifecycleScope.launch(Dispatchers.Main){
