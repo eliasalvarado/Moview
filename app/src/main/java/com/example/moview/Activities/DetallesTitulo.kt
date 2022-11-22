@@ -18,7 +18,6 @@ import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
-import com.google.android.material.tabs.TabLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
@@ -49,7 +48,7 @@ class DetallesTitulo : AppCompatActivity() {
         poster = findViewById(R.id.posterPeliculaDetalles)
         buttomBack = findViewById(R.id.botonBackDetalles)
         buttonCalificar = findViewById(R.id.botonCalificaPeliculaDetalles)
-        nombreTitulo = findViewById(R.id.nombrePelicula)
+        nombreTitulo = findViewById(R.id.textviewPreguntaTitulo)
         datosTitulo = findViewById(R.id.datosPelicula)
         calificacionTitulo = findViewById(R.id.porcentajeDeLikesDetalle)
 
@@ -73,6 +72,12 @@ class DetallesTitulo : AppCompatActivity() {
     }
 
     private fun inicializarDatos(id: String) {
+        lifecycleScope.launch {
+            buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+            buttonSinopsis.setBackgroundColor(resources.getColor(R.color.teal_700))
+            buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+            buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+        }
         lifecycleScope.launch(Dispatchers.IO) {
             val titulo = repository.getById(id = id)
             if(titulo != null) {
@@ -120,34 +125,54 @@ class DetallesTitulo : AppCompatActivity() {
         buttonSinopsis.setOnClickListener() {
             lifecycleScope.launch {
                 navController.navigate(R.id.sinopsisFragment)
-                buttonSinopsis.setBackgroundColor(Color.CYAN)
-                buttonReparto.setBackgroundColor(Color.GRAY)
-                buttonComentarios.setBackgroundColor(Color.GRAY)
+                buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonSinopsis.setBackgroundColor(resources.getColor(R.color.teal_700))
+                buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
             }
         }
+
         buttonReparto.setOnClickListener() {
             lifecycleScope.launch {
                 navController.navigate(R.id.crewFragment)
-                buttonSinopsis.setBackgroundColor(Color.GRAY)
-                buttonReparto.setBackgroundColor(Color.CYAN)
-                buttonComentarios.setBackgroundColor(Color.GRAY)
+                buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonReparto.setBackgroundColor(resources.getColor(R.color.teal_700))
+                buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
             }
         }
+
         buttonComentarios.setOnClickListener() {
             lifecycleScope.launch {
                 navController.navigate(R.id.commentsFragment)
-                buttonSinopsis.setBackgroundColor(Color.GRAY)
-                buttonReparto.setBackgroundColor(Color.GRAY)
-                buttonComentarios.setBackgroundColor(Color.CYAN)
+                buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonComentarios.setBackgroundColor(resources.getColor(R.color.teal_700))
+            }
+        }
+
+        buttonCalificar.setOnClickListener() {
+            lifecycleScope.launch {
+                navController.navigate(R.id.comentarioUsuarioFragment)
+                buttonCalificar.setBackgroundColor(resources.getColor(R.color.teal_700))
+                buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
             }
         }
 
         buttomBack.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            //startActivity(Intent(this, MainActivity::class.java))
+            this.onBackPressed()
         }
     }
 
     fun getSinopsisTitulo(): String {
         return tituloActual.sinopsis
+    }
+
+    fun getIdTitulo(): Titulo {
+        return tituloActual
     }
 }

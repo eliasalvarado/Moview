@@ -61,7 +61,10 @@ class FirebaseTituloApiImpl(
         }
     }
 
-    override suspend fun actualizarTitulo(id: String, nuevosDatos: Map<String, Objects>): String {
+    override suspend fun actualizarPuntajeTitulo(
+        id: String,
+        nuevosDatos: Map<String, MutableList<Boolean>>
+    ): String {
         return try {
             val document = db.collection("peliculas").document(id)
             document.update(nuevosDatos)
