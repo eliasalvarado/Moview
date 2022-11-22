@@ -4,7 +4,6 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.moview.data.local.dao.TituloDao
 
-
 @Database(
     entities = [TituloEstreno::class],
     version = 1

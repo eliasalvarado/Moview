@@ -22,6 +22,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object WatchModeModule {
 
+    @Provides
+    @Singleton
     fun provideWatchModeDb(
         @ApplicationContext context: Context
     ): WatchModeDb {
@@ -64,7 +66,7 @@ object WatchModeModule {
         client: OkHttpClient
     ) : WatchModeApi {
         return Retrofit.Builder()
-            .baseUrl("https://api.watchmode.com/v1")
+            .baseUrl("https://api.watchmode.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

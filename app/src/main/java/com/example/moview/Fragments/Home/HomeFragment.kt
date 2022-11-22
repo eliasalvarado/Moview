@@ -3,6 +3,7 @@ package com.example.moview.Fragments.Home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,17 +14,24 @@ import com.example.moview.Fragments.Adapters.Home.model.CategoryClass
 import com.example.moview.Fragments.Adapters.Home.model.CategoryItem
 import com.example.moview.MainActivity
 import com.example.moview.R
+import com.example.moview.data.Repository.Estreno.EstrenoRepository
+import com.example.moview.data.Repository.Estreno.EstrenoRepositoryImpl
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
 import com.example.moview.data.local.entity.Titulo
+import com.example.moview.data.local.entity.TituloEstreno
 import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
+import com.example.moview.Fragments.Home.HomeFragmentUiState
+import com.example.moview.Fragments.Home.HomeFragmentViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.RecyclerViewItemClickHandler {
     private lateinit var bottonNav: BottomNavigationView
     private lateinit var categoryRecycler: RecyclerView
@@ -31,6 +39,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     private lateinit var list: MutableList<CategoryClass>
     private lateinit var secondaryList: MutableList<CategoryItem>
     private lateinit var repository: TituloRepository
+    private val viewModel: HomeFragmentViewModel by viewModels()
 
     private val key = "NJvzEz4BNnsCPqmLwIiNtXjuW1jfLW4hTYYr0Prq"
 
@@ -43,9 +52,43 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
             FirebaseTituloApiImpl(Firebase.firestore)
         )
 
+
         instanceData()
         setListeners()
         setCategoryRecycler(list)
+        setObeservables()
+        viewModel.getEstrenos()
+    }
+
+    private fun setObeservables() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.uiState.collectLatest { state ->
+                handleState(state)
+            }
+        }
+    }
+
+    private fun handleState(state: HomeFragmentUiState) {
+        when(state){
+            HomeFragmentUiState.Default -> {
+                println("Default")
+            }
+            is HomeFragmentUiState.Error -> {
+                println("Error")
+            }
+            HomeFragmentUiState.Loading -> {
+                println("Loading")
+            }
+            is HomeFragmentUiState.Success -> {
+                agregarEstreno(state.estrenos as MutableList<TituloEstreno>, "Prueba", "Peli - Prueba")
+                lifecycleScope.launch(Dispatchers.Main) {
+                    setCategoryRecycler(list)
+                }
+            }
+            else -> {
+                println("Error")
+            }
+        }
     }
 
     private fun instanceData() {
@@ -120,6 +163,14 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         val titulos: MutableList<CategoryItem> = ArrayList()
         lista.forEach {
             titulos.add(CategoryItem(it.title, it.poster))
+        }
+        list.add(CategoryClass(genero, tipo, titulos))
+    }
+
+    private fun agregarEstreno(lista: MutableList<TituloEstreno>, genero: String, tipo: String) {
+        val titulos: MutableList<CategoryItem> = ArrayList()
+        lista.forEach {
+            titulos.add(CategoryItem(it.title, it.imagen))
         }
         list.add(CategoryClass(genero, tipo, titulos))
     }
