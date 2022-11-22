@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.moview.MainActivity
+import com.example.moview.Activities.MainActivity
 import com.example.moview.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

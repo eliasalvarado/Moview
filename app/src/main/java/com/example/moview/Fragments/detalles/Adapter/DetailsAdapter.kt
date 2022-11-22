@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.moview.Fragments.detalles.Fragments.AboutFragment
+import com.example.moview.Fragments.detalles.Fragments.SinopsisFragment
 import com.example.moview.Fragments.detalles.Fragments.CommentsFragment
 import com.example.moview.Fragments.detalles.Fragments.CrewFragment
 
@@ -16,7 +16,7 @@ internal class DetailsAdapter(var context: Context, fm: FragmentManager, var tot
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> {
-                AboutFragment()
+                SinopsisFragment()
             }
             1 -> {
                 CrewFragment()

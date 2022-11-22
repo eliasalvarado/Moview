@@ -5,6 +5,7 @@ import com.example.moview.data.remote.dto.TituloDto
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.tasks.await
+import java.util.*
 
 class FirebaseTituloApiImpl(
     private val db : FirebaseFirestore
@@ -57,6 +58,22 @@ class FirebaseTituloApiImpl(
             }
         } catch (e: Exception) {
             return null
+        }
+    }
+
+    override suspend fun actualizarTitulo(id: String, nuevosDatos: Map<String, Objects>): String {
+        return try {
+            val document = db.collection("peliculas").document(id)
+            document.update(nuevosDatos)
+            "Tu comentario ha sido realizado con éxito."
+        } catch (e: Exception) {
+            return try {
+                val document = db.collection("peliculas").document(id)
+                document.update(nuevosDatos)
+                "Tu comentario ha sido realizado con éxito."
+            } catch (e: Exception) {
+                return e.message ?: "Error"
+            }
         }
     }
 }

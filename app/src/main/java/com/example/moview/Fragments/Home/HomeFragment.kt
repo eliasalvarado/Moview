@@ -1,5 +1,6 @@
 package com.example.moview.Fragments.Home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -7,11 +8,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moview.Activities.DetallesTitulo
 import com.example.moview.Fragments.Adapters.Home.adapter.CategoryItemAdapter
 import com.example.moview.Fragments.Adapters.Home.adapter.CategoryRecyclerAdapter
 import com.example.moview.Fragments.Adapters.Home.model.CategoryClass
 import com.example.moview.Fragments.Adapters.Home.model.CategoryItem
-import com.example.moview.MainActivity
+import com.example.moview.Activities.MainActivity
 import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
@@ -41,13 +43,16 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
             FirebaseTituloApiImpl(Firebase.firestore)
         )
 
+        list = mutableListOf()
+
 
         instanceData()
         setListeners()
-        setCategoryRecycler(list)
+        //setCategoryRecycler(list)
     }
 
     private fun instanceData() {
+        /*
         val itemList: MutableList<CategoryItem> = ArrayList()
         itemList.add(CategoryItem("Breaking Bad 1", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
         itemList.add(CategoryItem("Breaking Bad 2", "https://cdn.watchmode.com/posters/03173903_poster_w185.jpg"))
@@ -57,6 +62,8 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
         listOfAll.add(CategoryClass("Acción", "Series", itemList))
 
         list = listOfAll
+
+         */
 
         val generosPelis: MutableList<String> = ArrayList()
         generosPelis.add("Thriller")
@@ -118,7 +125,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     private fun agregarTitulo(lista: MutableList<Titulo>, genero: String, tipo: String) {
         val titulos: MutableList<CategoryItem> = ArrayList()
         lista.forEach {
-            titulos.add(CategoryItem(it.title, it.poster))
+            titulos.add(CategoryItem(it.id, it.title, it.poster))
         }
         list.add(CategoryClass(genero, tipo, titulos))
     }
@@ -150,6 +157,9 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
 
     override fun onItemClicked(item: CategoryItem) {
         println("Se ha presionado el item: "+ item.toString())
+        val intent = Intent(activity, DetallesTitulo::class.java)
+        intent.putExtra("id", item.id)
+        startActivity(intent)
     }
 
 
