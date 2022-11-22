@@ -44,9 +44,7 @@ class FirebaseUserApiImpl (
         }
     }
 
-    override suspend fun deleteUser(email: String) {
-        val document = db.collection("users")
-    }
+   
 
 
 }
