@@ -7,12 +7,16 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.example.moview.Activities.DetallesTitulo
 import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
+import com.example.moview.data.local.entity.Comentario
 import com.example.moview.data.local.entity.Titulo
+import com.example.moview.data.local.source.Database
 import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
+import com.example.moview.datasource.model.UserTable
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,6 +33,8 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
     private lateinit var tituloActual: Titulo
     private var leGusta: Boolean = false
     private var calificacionSeleccionada: Boolean = false
+    private lateinit var database: Database
+    private lateinit var currentUser : List<UserTable>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,6 +42,11 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
         repository = TituloRepositoryImpl(
             FirebaseTituloApiImpl(Firebase.firestore)
         )
+        database = Room.databaseBuilder(
+            requireContext(),
+            Database::class.java,
+            "dbname"
+        ).build()
 
         buttonLike = view.findViewById(R.id.botonhappyfaceComentario)
         buttonDislike =  view.findViewById(R.id.botonsadfaceComentario)
@@ -72,7 +83,7 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
     }
 
     private fun publicarComentario() {
-        val comentario: String = textInputComentario.editText?.text.toString() ?: ""
+        val comentarioTextInput: String = textInputComentario.editText?.text.toString() ?: ""
         val puntajeActual: MutableList<Boolean> = tituloActual.puntaje
         puntajeActual.add(leGusta)
         val datosActuales: Map<String, MutableList<Boolean>> = mapOf(
@@ -80,13 +91,28 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
         )
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val comentario = repository.actualizarPuntajeTitulo(tituloActual.id, datosActuales)
+            currentUser = database.userDao().getTheUser()
+            val puntajeExitoso = repository.actualizarPuntajeTitulo(tituloActual.id, datosActuales)
+            val comentarioPublicar = Comentario(
+                autor = currentUser[0].user,
+                comentario = comentarioTextInput,
+                critico = currentUser[0].critico
+            )
+            val comentarioExitoso = repository.actualizarComentariosTitulo(tituloActual.id, comentarioPublicar)
             lifecycleScope.launch(Dispatchers.Main) {
-                Toast.makeText(
-                    requireContext(),
-                    "Tu comentario ha sido publicado con éxito",
-                    Toast.LENGTH_LONG
-                ).show()
+                if(puntajeExitoso && comentarioExitoso) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Tu comentario ha sido publicado con éxito",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ha ocurrido un error inesperado",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
     }
