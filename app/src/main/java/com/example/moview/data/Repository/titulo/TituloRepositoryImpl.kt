@@ -3,6 +3,7 @@ package com.example.moview.data.Repository.titulo
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.remote.api.TituloApi
 import com.example.moview.data.remote.dto.maptoEntity
+import java.util.*
 
 class TituloRepositoryImpl(
     private val api: TituloApi
@@ -34,5 +35,9 @@ class TituloRepositoryImpl(
             return filteredTitles.map { TituloDto -> TituloDto.maptoEntity() }
         }
         return null
+    }
+
+    override suspend fun actualizarTitulo(id: String, nuevosDatos: Map<String, Objects>): String {
+        return api.actualizarTitulo(id, nuevosDatos)
     }
 }
