@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
 import com.example.moview.R
 import com.example.moview.data.local.entity.TituloEstreno
 
@@ -33,6 +34,7 @@ class EstrenosAdapter(
                     error(R.drawable.error_icon)
                     memoryCachePolicy(CachePolicy.ENABLED)
                     diskCachePolicy(CachePolicy.READ_ONLY)
+                    transformations(RoundedCornersTransformation(25.0F))
                 }
                 textTitleEstreno.text = title
                 textFechaestreno.text = fecha

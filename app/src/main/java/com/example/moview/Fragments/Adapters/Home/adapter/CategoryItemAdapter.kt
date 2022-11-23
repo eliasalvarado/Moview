@@ -2,6 +2,7 @@ package com.example.moview.Fragments.Adapters.Home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.RoundedCorner
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
+import coil.transform.RoundedCornersTransformation
 import com.example.moview.Fragments.Adapters.Home.model.CategoryItem
 import com.example.moview.R
 
@@ -43,6 +45,7 @@ class CategoryItemAdapter(private val context: Context, private val categoryList
             crossfade(450)
             placeholder(R.drawable.downloading_icon)
             error(R.drawable.error_icon)
+            transformations(RoundedCornersTransformation(25.0F))
         }
         holder.title.text = categoryList[position].contentTitle
         holder.layoutItem.setOnClickListener {

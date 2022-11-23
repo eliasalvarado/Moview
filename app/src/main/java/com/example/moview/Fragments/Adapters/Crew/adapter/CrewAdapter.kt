@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
+import coil.transform.RoundedCornersTransformation
 import com.example.moview.Fragments.Adapters.Crew.model.CrewClass
 import com.example.moview.R
 
@@ -39,6 +40,7 @@ class CrewAdapter(
             crossfade(450)
             placeholder(R.drawable.downloading_icon)
             error(R.drawable.error_icon)
+            transformations(RoundedCornersTransformation(25.0F))
         }
         holder.role.text = crewList[position].role
         holder.name.text = crewList[position].name

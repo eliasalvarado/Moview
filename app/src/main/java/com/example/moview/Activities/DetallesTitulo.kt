@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import coil.load
 import coil.request.CachePolicy
+import coil.transform.RoundedCornersTransformation
 import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
@@ -75,7 +76,10 @@ class DetallesTitulo : AppCompatActivity() {
 
 
 
-        inicializarDatos(id)
+        lifecycleScope.launch(Dispatchers.IO) {
+            tituloActual = repository.getById(id ?: "184033")!!
+            inicializarDatos(id)
+        }
         setListeners()
     }
 
@@ -98,8 +102,12 @@ class DetallesTitulo : AppCompatActivity() {
         }
         lifecycleScope.launch(Dispatchers.IO) {
             val titulo = repository.getById(id = id)
+            val reparto = repository.getReparto(id = intent.getStringExtra("id") ?: "184033")
+            val comentarios = repository.getComentarios(id = intent.getStringExtra("id") ?: "184033")
             if(titulo != null) {
                 tituloActual = titulo
+                tituloActual.comentarios = comentarios as MutableList<Comentario>
+                tituloActual.reparto = reparto as MutableList<Reparto>
                 lifecycleScope.launch(Dispatchers.Main) {
                     banner.load(titulo.banner){
                         memoryCachePolicy(CachePolicy.DISABLED)
@@ -108,6 +116,7 @@ class DetallesTitulo : AppCompatActivity() {
                         crossfade(450)
                         placeholder(R.drawable.downloading_icon)
                         error(R.drawable.error_icon)
+
                     }
                     poster.load(titulo.poster){
                         memoryCachePolicy(CachePolicy.DISABLED)
@@ -116,6 +125,7 @@ class DetallesTitulo : AppCompatActivity() {
                         crossfade(450)
                         placeholder(R.drawable.downloading_icon)
                         error(R.drawable.error_icon)
+                        transformations(RoundedCornersTransformation(25.0F))
                     }
                     nombreTitulo.text = titulo.title
                     val detalles: String = titulo.year + " - Director"
@@ -163,8 +173,6 @@ class DetallesTitulo : AppCompatActivity() {
                 buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
                 buttonReparto.setBackgroundColor(resources.getColor(R.color.teal_700))
                 buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
-                val reparto = repository.getReparto(id = intent.getStringExtra("id") ?: "184033")
-                println(reparto?.get(0)?.nombre)
             }
         }
 
@@ -175,8 +183,6 @@ class DetallesTitulo : AppCompatActivity() {
                 buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
                 buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
                 buttonComentarios.setBackgroundColor(resources.getColor(R.color.teal_700))
-                val comentarios = repository.getComentarios(id = intent.getStringExtra("id") ?: "184033")
-                println(comentarios?.get(0)?.autor)
             }
         }
 

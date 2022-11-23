@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
+import coil.transform.RoundedCornersTransformation
 import com.example.moview.Fragments.Adapters.Search.model.SearchClass
 import com.example.moview.R
 import org.w3c.dom.Text
@@ -51,6 +52,7 @@ class SearchAdapter (
             crossfade(450)
             placeholder(R.drawable.downloading_icon)
             error(R.drawable.error_icon)
+            transformations(RoundedCornersTransformation(25.0F))
         }
         holder.title.text = searchList[position].title+" ("+searchList[position].year+")"
         holder.rate.text = searchList[position].score+"%"
