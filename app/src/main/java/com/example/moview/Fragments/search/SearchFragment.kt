@@ -57,7 +57,7 @@ class SearchFragment: Fragment(R.layout.fragment_search), SearchAdapter.Recycler
 
     private fun instanceData() {
         lifecycleScope.launch(Dispatchers.IO){
-            val peliculas = repository.getAllPeliculas()
+            val peliculas = repository.getByType("peliculas")
             if(peliculas != null){
                 peliculas.forEach{
                     list.add(SearchClass(it.title, it.poster, "Pelicula", it.year, meanBoolean(it.puntaje)))
@@ -68,7 +68,7 @@ class SearchFragment: Fragment(R.layout.fragment_search), SearchAdapter.Recycler
             println(list.toString())
         }
         lifecycleScope.launch(Dispatchers.IO){
-            val series = repository.getAllSeries()
+            val series = repository.getByType("series")
             if(series != null){
                 series.forEach{
                     list.add(SearchClass(it.title, it.poster, "Pelicula", it.year, meanBoolean(it.puntaje)))
