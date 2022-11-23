@@ -115,6 +115,8 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
                             "Tu comentario ha sido publicado con éxito",
                             Toast.LENGTH_LONG
                         ).show()
+                        (activity as DetallesTitulo).actualizarDatos()
+                        textInputComentario.editText?.setText("")
                     } else {
                         Toast.makeText(
                             requireContext(),
@@ -131,6 +133,8 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
                             "Tu puntuacion ha sido publicado con éxito",
                             Toast.LENGTH_LONG
                         ).show()
+                        textInputComentario.editText?.setText("")
+                        (activity as DetallesTitulo).actualizarDatos()
                     } else {
                         Toast.makeText(
                             requireContext(),

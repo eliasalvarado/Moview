@@ -76,6 +76,10 @@ class DetallesTitulo : AppCompatActivity() {
         setListeners()
     }
 
+    fun actualizarDatos() {
+        inicializarDatos(id = intent.getStringExtra("id") ?: "184033")
+    }
+
     private fun inicializarDatos(id: String) {
         lifecycleScope.launch {
             buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
