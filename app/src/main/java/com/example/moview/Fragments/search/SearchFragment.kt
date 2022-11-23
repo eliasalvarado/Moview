@@ -1,5 +1,6 @@
 package com.example.moview.Fragments.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
@@ -8,9 +9,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moview.Activities.DetallesTitulo
 import com.example.moview.Fragments.Adapters.Search.adapter.SearchAdapter
 import com.example.moview.Fragments.Adapters.Search.model.SearchClass
-import com.example.moview.MainActivity
+import com.example.moview.Activities.MainActivity
 import com.example.moview.R
 import com.example.moview.data.Repository.Estreno.EstrenoRepository
 import com.example.moview.data.Repository.titulo.TituloRepository
@@ -60,7 +62,7 @@ class SearchFragment: Fragment(R.layout.fragment_search), SearchAdapter.Recycler
             val peliculas = repository.getByType("peliculas")
             if(peliculas != null){
                 peliculas.forEach{
-                    list.add(SearchClass(it.title, it.poster, "Pelicula", it.year, meanBoolean(it.puntaje)))
+                    list.add(SearchClass(it.id, it.title, it.poster, "Pelicula", it.year, meanBoolean(it.puntaje)))
                 }
 
             }}
@@ -71,7 +73,7 @@ class SearchFragment: Fragment(R.layout.fragment_search), SearchAdapter.Recycler
             val series = repository.getByType("series")
             if(series != null){
                 series.forEach{
-                    list.add(SearchClass(it.title, it.poster, "Pelicula", it.year, meanBoolean(it.puntaje)))
+                    list.add(SearchClass(it.id, it.title, it.poster, "Serie", it.year, meanBoolean(it.puntaje)))
                 }
 
             }
@@ -89,7 +91,7 @@ class SearchFragment: Fragment(R.layout.fragment_search), SearchAdapter.Recycler
 
     private fun addPrimary(list: MutableList<Titulo>, type: String) {
         list.forEach {
-            this.list.add(SearchClass(it.title, it.poster, type, it.year, meanBoolean(it.puntaje)))
+            this.list.add(SearchClass(it.id , it.title, it.poster, type, it.year, meanBoolean(it.puntaje)))
         }
 
     }
@@ -134,6 +136,9 @@ class SearchFragment: Fragment(R.layout.fragment_search), SearchAdapter.Recycler
 
     override fun onSearchClicked(search: SearchClass) {
         println("Se ha presionado el item: "+ search.toString())
+        val intent = Intent(activity, DetallesTitulo::class.java)
+        intent.putExtra("id", search.id)
+        startActivity(intent)
     }
 
     fun matchPattern(pattern: String, text: String): Int {

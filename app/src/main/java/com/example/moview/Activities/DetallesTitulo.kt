@@ -115,7 +115,7 @@ class DetallesTitulo : AppCompatActivity() {
                         error(R.drawable.error_icon)
                     }
                     nombreTitulo.text = titulo.title
-                    val detalles: String = titulo.fecha_estreno + " - Director"
+                    val detalles: String = titulo.year + " - Director"
                     datosTitulo.text = detalles
                     val porcentaje: String = porcentajePuntaje(titulo.puntaje).toString() + " %"
                     calificacionTitulo.text = porcentaje
