@@ -1,5 +1,6 @@
 package com.example.moview.Fragments.Home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
@@ -8,11 +9,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moview.Activities.DetallesTitulo
 import com.example.moview.Fragments.Adapters.Home.adapter.CategoryItemAdapter
 import com.example.moview.Fragments.Adapters.Home.adapter.CategoryRecyclerAdapter
 import com.example.moview.Fragments.Adapters.Home.model.CategoryClass
 import com.example.moview.Fragments.Adapters.Home.model.CategoryItem
-import com.example.moview.MainActivity
+import com.example.moview.Activities.MainActivity
 import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
@@ -125,7 +127,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     private fun agregarTitulo(lista: MutableList<Titulo>, genero: String, tipo: String) {
         val titulos: MutableList<CategoryItem> = ArrayList()
         lista.forEach {
-            titulos.add(CategoryItem(it.title, it.poster))
+            titulos.add(CategoryItem(it.id, it.title, it.poster))
         }
         list.add(CategoryClass(genero, tipo, titulos))
     }
@@ -157,6 +159,9 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
 
     override fun onItemClicked(item: CategoryItem) {
         println("Se ha presionado el item: "+ item.toString())
+        val intent = Intent(activity, DetallesTitulo::class.java)
+        intent.putExtra("id", item.id)
+        startActivity(intent)
     }
 
 

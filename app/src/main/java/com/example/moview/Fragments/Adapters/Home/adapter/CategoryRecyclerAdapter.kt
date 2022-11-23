@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moview.Fragments.Adapters.Home.adapter.CategoryRecyclerAdapter.*
 import com.example.moview.Fragments.Adapters.Home.model.CategoryClass
 import com.example.moview.Fragments.Adapters.Home.model.CategoryItem
 import com.example.moview.Fragments.Home.HomeFragment
-import com.example.moview.MainActivity
 import com.example.moview.R
-import org.w3c.dom.Text
 
 class CategoryRecyclerAdapter (private val context: Context, private val listOfAll: MutableList<CategoryClass>, requireFragment: HomeFragment):
     RecyclerView.Adapter<CategoryRecyclerAdapter.CategoryViewHolder>() {

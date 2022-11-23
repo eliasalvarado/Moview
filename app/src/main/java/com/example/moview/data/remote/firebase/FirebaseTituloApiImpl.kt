@@ -1,6 +1,7 @@
 package com.example.moview.data.remote.firebase
 
 import com.example.moview.data.remote.api.TituloApi
+import com.example.moview.data.remote.dto.ComentarioDto
 import com.example.moview.data.remote.dto.TituloDto
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -12,15 +13,19 @@ class FirebaseTituloApiImpl(
 ) : TituloApi {
     override suspend fun getById(id: String): TituloDto? {
         return try {
-            val document = db.collection("peliculas").document(id).get().await()
-            document?.toObject<TituloDto>()
-        } catch (e: Exception) {
-            return try {
-                val document = db.collection("series").document(id).get().await()
-                document?.toObject<TituloDto>()
-            } catch (e: Exception) {
-                return null
+            var document = db.collection("peliculas").document(id).get().await()
+            if(document.data != null) {
+                document.toObject<TituloDto>()
+            } else {
+                return try {
+                    document = db.collection("series").document(id).get().await()
+                    document?.toObject<TituloDto>()
+                } catch (e: Exception) {
+                    return null
+                }
             }
+        } catch (e: Exception) {
+            return null
         }
     }
 
@@ -61,19 +66,52 @@ class FirebaseTituloApiImpl(
         }
     }
 
-    override suspend fun actualizarTitulo(id: String, nuevosDatos: Map<String, Objects>): String {
+    override suspend fun actualizarPuntajeTitulo(
+        id: String,
+        nuevosDatos: Map<String, MutableList<Boolean>>
+    ): Boolean {
         return try {
-            val document = db.collection("peliculas").document(id)
-            document.update(nuevosDatos)
-            "Tu comentario ha sido realizado con éxito."
-        } catch (e: Exception) {
-            return try {
-                val document = db.collection("peliculas").document(id)
+            var document = db.collection("peliculas").document(id)
+            if(document.get().await().data != null) {
                 document.update(nuevosDatos)
-                "Tu comentario ha sido realizado con éxito."
-            } catch (e: Exception) {
-                return e.message ?: "Error"
+                true
+            } else {
+                return try {
+                    document = db.collection("series").document(id)
+                    if(document.get().await().data != null) {
+                        document.update(nuevosDatos)
+                        true
+                    } else return false
+                } catch (e: Exception) {
+                    return false
+                }
             }
+        } catch (e: Exception) {
+            return false
+        }
+    }
+
+    override suspend fun actualizarComentariosTitulo(
+        id: String,
+        nuevoComentario: ComentarioDto
+    ): Boolean {
+        return try {
+            val document = db.collection("peliculas").document(id).get().await()
+            if(document.data != null) {
+                val documentCollection = db.collection("peliculas").document(id).collection("comentarios")
+                documentCollection.add(nuevoComentario).await()
+                true
+            } else {
+                return try {
+                    val documentCollection = db.collection("series").document(id).collection("comentarios")
+                    documentCollection.add(nuevoComentario).await()
+                    true
+                } catch (e: Exception) {
+                    return false
+                }
+            }
+        } catch (e: Exception) {
+            return false
         }
     }
 

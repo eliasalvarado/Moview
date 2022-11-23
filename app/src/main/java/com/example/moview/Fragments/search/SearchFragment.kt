@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moview.Fragments.Adapters.Search.adapter.SearchAdapter
 import com.example.moview.Fragments.Adapters.Search.model.SearchClass
-import com.example.moview.MainActivity
 import com.example.moview.R
 import com.example.moview.data.Repository.Estreno.EstrenoRepository
+import com.example.moview.Activities.MainActivity
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
 import com.example.moview.data.local.entity.Titulo
@@ -128,6 +128,7 @@ class SearchFragment: Fragment(R.layout.fragment_search), SearchAdapter.Recycler
         list.forEach {
             if(isRelated(searchInput.editText!!.text.toString(), it.title)){
                 filtered.add(it)
+
             }
         }
     }

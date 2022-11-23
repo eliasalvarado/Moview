@@ -11,7 +11,7 @@ import androidx.room.Room
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
-import com.example.moview.MainActivity
+import com.example.moview.Activities.MainActivity
 import com.example.moview.R
 import com.example.moview.data.local.source.Database
 import com.example.moview.datasource.model.UserTable

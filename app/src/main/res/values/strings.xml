@@ -15,11 +15,11 @@
     <string name="registro">¿Aún no tienes cuenta? registrate aquí</string>
     <string name="crearCuenta">Crear Cuenta</string>
     <string name="calificaPelicula">Califica esta película</string>
-    <string name="acerca_de">Acerca De</string>
+    <string name="acerca_de">Sinopsis</string>
     <string name="reparto">Reparto</string>
     <string name="comentarios">Comentarios</string>
-    <string name="like">Like</string>
-    <string name="dislike">Dislike</string>
+    <string name="like">Muy buena</string>
+    <string name="dislike">Pésima</string>
     <string name="comentario">Comentario</string>
     <string name="publicar">Publicar</string>
     <string name="editarUsuario">Ingresa tu nuevo usuario</string>
@@ -36,4 +36,6 @@
     <string name="proximos_estrenos">Próximos estrenos</string>
     <string name="peliculas">Películas</string>
     <string name="series">Series</string>
+    <string name="sinopsis">Sinopsis</string>
+    <string name="preguntaComentarioTitulo">¿Qué tal estuvo la película/serie?</string>
 </resources>
