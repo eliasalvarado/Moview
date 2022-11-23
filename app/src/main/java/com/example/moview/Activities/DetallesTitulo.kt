@@ -17,6 +17,9 @@ import coil.request.CachePolicy
 import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
+import com.example.moview.data.local.entity.Comentario
+import com.example.moview.data.local.entity.Persona
+import com.example.moview.data.local.entity.Reparto
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
 import com.google.firebase.firestore.ktx.firestore
@@ -160,6 +163,8 @@ class DetallesTitulo : AppCompatActivity() {
                 buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
                 buttonReparto.setBackgroundColor(resources.getColor(R.color.teal_700))
                 buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                val reparto = repository.getReparto(id = intent.getStringExtra("id") ?: "184033")
+                println(reparto?.get(0)?.nombre)
             }
         }
 
@@ -170,6 +175,8 @@ class DetallesTitulo : AppCompatActivity() {
                 buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
                 buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
                 buttonComentarios.setBackgroundColor(resources.getColor(R.color.teal_700))
+                val comentarios = repository.getComentarios(id = intent.getStringExtra("id") ?: "184033")
+                println(comentarios?.get(0)?.autor)
             }
         }
 
@@ -197,5 +204,9 @@ class DetallesTitulo : AppCompatActivity() {
 
     fun getIdTitulo(): Titulo {
         return tituloActual
+    }
+
+    fun getComentarios(): MutableList<Comentario> {
+        return tituloActual.comentarios
     }
 }

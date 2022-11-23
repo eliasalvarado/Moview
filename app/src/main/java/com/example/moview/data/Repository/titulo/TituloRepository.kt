@@ -3,6 +3,7 @@ package com.example.moview.data.Repository.titulo
 import com.example.moview.data.local.entity.Comentario
 import com.example.moview.data.local.entity.Reparto
 import com.example.moview.data.local.entity.Titulo
+import com.example.moview.data.remote.dto.ComentarioDto
 
 interface TituloRepository {
     suspend fun getById(id: String): Titulo?
@@ -12,4 +13,5 @@ interface TituloRepository {
     suspend fun actualizarPuntajeTitulo(id:String, nuevosDatos: Map<String, MutableList<Boolean>>): Boolean
     suspend fun actualizarComentariosTitulo(id: String, nuevoComentario: Comentario): Boolean
     suspend fun getReparto(id: String): List<Reparto>?
+    suspend fun getComentarios(id:String): List<Comentario>?
 }

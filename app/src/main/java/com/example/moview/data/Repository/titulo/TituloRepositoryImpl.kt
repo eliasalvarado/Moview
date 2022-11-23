@@ -5,6 +5,7 @@ import com.example.moview.data.local.entity.Reparto
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.local.entity.maptoEntity
 import com.example.moview.data.remote.api.TituloApi
+import com.example.moview.data.remote.dto.ComentarioDto
 import com.example.moview.data.remote.dto.RepartoDto
 import com.example.moview.data.remote.dto.mapToEntity
 import com.example.moview.data.remote.dto.maptoEntity
@@ -57,5 +58,9 @@ class TituloRepositoryImpl(
 
     override suspend fun getReparto(id: String): List<Reparto>? {
         return api.getReparto(id)?.map { RepartoDto -> RepartoDto.mapToEntity() }
+    }
+
+    override suspend fun getComentarios(id: String): List<Comentario>? {
+        return api.getComentarios(id)?.map { ComentarioDto -> ComentarioDto.maptoEntity() }
     }
 }
