@@ -64,7 +64,7 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
             calificacionSeleccionada = true
             lifecycleScope.launch {
                 buttonLike.alpha = 1F
-                buttonDislike.alpha = 0.50F
+                buttonDislike.alpha = 0.30F
             }
         }
 
@@ -72,7 +72,7 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
             leGusta = false
             calificacionSeleccionada = true
             lifecycleScope.launch {
-                buttonLike.alpha = 0.50F
+                buttonLike.alpha = 0.30F
                 buttonDislike.alpha = 1F
             }
         }
@@ -117,6 +117,9 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
                         ).show()
                         (activity as DetallesTitulo).actualizarDatos()
                         textInputComentario.editText?.setText("")
+                        buttonLike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        calificacionSeleccionada = false
                     } else {
                         Toast.makeText(
                             requireContext(),
@@ -135,6 +138,9 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
                         ).show()
                         textInputComentario.editText?.setText("")
                         (activity as DetallesTitulo).actualizarDatos()
+                        buttonLike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        calificacionSeleccionada = false
                     } else {
                         Toast.makeText(
                             requireContext(),

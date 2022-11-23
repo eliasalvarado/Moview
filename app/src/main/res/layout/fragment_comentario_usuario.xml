@@ -17,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/separacion10dp"
-        android:layout_marginStart="@dimen/margenHorizontal"
         android:text="@string/preguntaComentarioTitulo"
         android:textColor="@color/white"
         android:textSize="20sp"

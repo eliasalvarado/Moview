@@ -78,6 +78,12 @@ class DetallesTitulo : AppCompatActivity() {
 
     fun actualizarDatos() {
         inicializarDatos(id = intent.getStringExtra("id") ?: "184033")
+        lifecycleScope.launch {
+            buttonCalificar.setBackgroundColor(resources.getColor(R.color.teal_700))
+            buttonSinopsis.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+            buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+            buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+        }
     }
 
     private fun inicializarDatos(id: String) {
