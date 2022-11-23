@@ -12,4 +12,5 @@ interface TituloApi {
     suspend fun actualizarPuntajeTitulo(id:String, nuevosDatos: Map<String, MutableList<Boolean>>): Boolean
     suspend fun actualizarComentariosTitulo(id: String, nuevoComentario: ComentarioDto): Boolean
     suspend fun getReparto(id:String): List<RepartoDto>?
+    suspend fun getComentarios(id:String): List<ComentarioDto>?
 }
