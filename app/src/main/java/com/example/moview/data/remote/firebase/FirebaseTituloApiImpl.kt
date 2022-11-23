@@ -96,14 +96,15 @@ class FirebaseTituloApiImpl(
         nuevoComentario: ComentarioDto
     ): Boolean {
         return try {
-            var document = db.collection("peliculas").document(id).collection("comentarios")
-            if(!document.get().await().isEmpty) {
-                document.add(nuevoComentario).await()
+            val document = db.collection("peliculas").document(id).get().await()
+            if(document.data != null) {
+                val documentCollection = db.collection("peliculas").document(id).collection("comentarios")
+                documentCollection.add(nuevoComentario).await()
                 true
             } else {
                 return try {
-                    document = db.collection("series").document(id).collection("comentarios")
-                    document.add(nuevoComentario).await()
+                    val documentCollection = db.collection("series").document(id).collection("comentarios")
+                    documentCollection.add(nuevoComentario).await()
                     true
                 } catch (e: Exception) {
                     return false
