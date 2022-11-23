@@ -22,9 +22,6 @@
         app:boxCornerRadiusTopEnd="@dimen/radio"
         app:boxCornerRadiusTopStart="@dimen/radio"
         android:hint="@string/busqueda"
-        app:endIconDrawable="@drawable/search_icon"
-        app:endIconTint="@color/main_light_green"
-        app:endIconMode="custom"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -33,6 +30,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/search_text_input_layout"
@@ -40,6 +38,19 @@
         android:layout_margin="20dp"
         tools:listitem="@layout/item_recycler_search"
         />
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/search_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="@id/search_text_input_layout"
+    app:layout_constraintEnd_toEndOf="@id/search_text_input_layout"
+    android:backgroundTint="#0000"
+    android:elevation="0dp"
+    app:rippleColor="#0000"
+    app:borderWidth="0dp"
+    android:outlineAmbientShadowColor="#0000"
+    android:src="@drawable/search_icon"
+    app:tint="@color/main_light_green"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

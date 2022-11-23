@@ -63,8 +63,8 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
             leGusta = true
             calificacionSeleccionada = true
             lifecycleScope.launch {
-                buttonLike.setBackgroundColor(resources.getColor(R.color.teal_700))
-                buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonLike.alpha = 1F
+                buttonDislike.alpha = 0.30F
             }
         }
 
@@ -72,13 +72,21 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
             leGusta = false
             calificacionSeleccionada = true
             lifecycleScope.launch {
-                buttonLike.setBackgroundColor(resources.getColor(R.color.teal_700))
-                buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                buttonLike.alpha = 0.30F
+                buttonDislike.alpha = 1F
             }
         }
 
         buttonPublicarcomentario.setOnClickListener() {
-            publicarComentario()
+            if(calificacionSeleccionada) {
+                publicarComentario()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Por favor, seleccione una calificación para la película/serie",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
@@ -93,27 +101,56 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
         lifecycleScope.launch(Dispatchers.IO) {
             currentUser = database.userDao().getTheUser()
             val puntajeExitoso = repository.actualizarPuntajeTitulo(tituloActual.id, datosActuales)
-            val comentarioPublicar = Comentario(
-                autor = currentUser[0].user,
-                comentario = comentarioTextInput,
-                critico = currentUser[0].critico
-            )
-            val comentarioExitoso = repository.actualizarComentariosTitulo(tituloActual.id, comentarioPublicar)
-            lifecycleScope.launch(Dispatchers.Main) {
-                if(puntajeExitoso && comentarioExitoso) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Tu comentario ha sido publicado con éxito",
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Ha ocurrido un error inesperado",
-                        Toast.LENGTH_LONG
-                    ).show()
+            if(textInputComentario.editText?.text.toString() != "") {
+                val comentarioPublicar = Comentario(
+                    autor = currentUser[0].user,
+                    comentario = comentarioTextInput,
+                    critico = currentUser[0].critico
+                )
+                val comentarioExitoso = repository.actualizarComentariosTitulo(tituloActual.id, comentarioPublicar)
+                lifecycleScope.launch(Dispatchers.Main) {
+                    if(puntajeExitoso && comentarioExitoso) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Tu comentario ha sido publicado con éxito",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        (activity as DetallesTitulo).actualizarDatos()
+                        textInputComentario.editText?.setText("")
+                        buttonLike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        calificacionSeleccionada = false
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Ha ocurrido un error inesperado",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            } else {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    if(puntajeExitoso) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Tu puntuacion ha sido publicado con éxito",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        textInputComentario.editText?.setText("")
+                        (activity as DetallesTitulo).actualizarDatos()
+                        buttonLike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        buttonDislike.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
+                        calificacionSeleccionada = false
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Ha ocurrido un error inesperado",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             }
+
         }
     }
 

@@ -5,8 +5,12 @@ import com.example.moview.data.local.entity.Reparto
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.local.entity.maptoEntity
 import com.example.moview.data.remote.api.TituloApi
+<<<<<<< HEAD
 import com.example.moview.data.remote.dto.RepartoDto
 import com.example.moview.data.remote.dto.mapToEntity
+=======
+import com.example.moview.data.remote.dto.TituloDto
+>>>>>>> main
 import com.example.moview.data.remote.dto.maptoEntity
 
 class TituloRepositoryImpl(
@@ -55,7 +59,12 @@ class TituloRepositoryImpl(
         return api.actualizarComentariosTitulo(id, nuevoComentario.maptoEntity())
     }
 
+<<<<<<< HEAD
     override suspend fun getReparto(id: String): List<Reparto>? {
         return api.getReparto(id)?.map { RepartoDto -> RepartoDto.mapToEntity() }
     }
+=======
+
+
+>>>>>>> main
 }

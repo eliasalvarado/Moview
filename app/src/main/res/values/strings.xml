@@ -37,5 +37,5 @@
     <string name="peliculas">Películas</string>
     <string name="series">Series</string>
     <string name="sinopsis">Sinopsis</string>
-    <string name="preguntaComentarioTitulo">¿Cómo le pareció la película/serie?</string>
+    <string name="preguntaComentarioTitulo">¿Qué tal estuvo la película/serie?</string>
 </resources>

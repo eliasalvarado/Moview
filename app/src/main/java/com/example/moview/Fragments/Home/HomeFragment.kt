@@ -3,6 +3,7 @@ package com.example.moview.Fragments.Home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -32,6 +33,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
     private lateinit var categoryRecyclerAdapter: CategoryRecyclerAdapter
     private lateinit var list: MutableList<CategoryClass>
     private lateinit var repository: TituloRepository
+    private lateinit var progressBar: ProgressBar
     
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,7 +47,8 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
 
         list = mutableListOf()
 
-
+        progressBar = view.findViewById(R.id.progress_home)
+        progressBar.visibility = View.VISIBLE
         instanceData()
         setListeners()
         //setCategoryRecycler(list)
@@ -114,10 +117,9 @@ class HomeFragment: Fragment(R.layout.fragment_home), CategoryItemAdapter.Recycl
             }
 
             lifecycleScope.launch(Dispatchers.Main) {
+                progressBar.visibility = View.GONE
                 setCategoryRecycler(list)
             }
-
-            println("Se han cargado")
         }
 
     }
