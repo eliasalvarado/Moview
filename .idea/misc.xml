@@ -37,12 +37,14 @@
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_search.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/ic_verificado.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/drawable/search_icon.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/activity_detalles_titulo.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/fragment_comentario_usuario.xml" value="0.1578125" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/fragment_comments.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/fragment_crew.xml" value="0.1578125" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/fragment_detalles.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/fragment_sinopsis.xml" value="0.1578125" />
         <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/item_recycler_comentario.xml" value="0.4" />
+        <entry key="..\:/AndroidStudioProjects/Moview/app/src/main/res/layout/item_recycler_reparto.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/MoView/Moview/app/src/main/res/layout/activity_detalles_titulo.xml" value="0.25" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/MoView/Moview/app/src/main/res/layout/fragment_comentario_usuario.xml" value="0.25" />
         <entry key="..\:/Users/pc/Documents/uvg/sem 4/aps moviles/MoView/Moview/app/src/main/res/layout/fragment_comments.xml" value="0.25" />

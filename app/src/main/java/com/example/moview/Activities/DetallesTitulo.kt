@@ -18,6 +18,7 @@ import com.example.moview.R
 import com.example.moview.data.Repository.titulo.TituloRepository
 import com.example.moview.data.Repository.titulo.TituloRepositoryImpl
 import com.example.moview.data.local.entity.Comentario
+import com.example.moview.data.local.entity.Persona
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.remote.firebase.FirebaseTituloApiImpl
 import com.google.firebase.firestore.ktx.firestore
@@ -200,5 +201,9 @@ class DetallesTitulo : AppCompatActivity() {
     fun getComentarios(): MutableList<Comentario>{
         println(tituloActual.reparto)
         return tituloActual.comentarios
+    }
+
+    fun getCrew(): MutableList<Persona>{
+        return tituloActual.reparto
     }
 }
