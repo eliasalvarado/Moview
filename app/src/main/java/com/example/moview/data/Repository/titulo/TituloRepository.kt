@@ -10,6 +10,4 @@ interface TituloRepository {
     suspend fun getPeliculasByGender(genero: String): List<Titulo>?
     suspend fun getSeriesByGender(genero: String): List<Titulo>?
     suspend fun actualizarTitulo(id:String, nuevosDatos: Map<String, Objects>): String
-    suspend fun getAllPeliculas(): List<Titulo>?
-    suspend fun getAllSeries(): List<Titulo>?
 }

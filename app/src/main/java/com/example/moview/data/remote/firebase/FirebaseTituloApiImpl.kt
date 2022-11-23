@@ -77,25 +77,4 @@ class FirebaseTituloApiImpl(
         }
     }
 
-    override suspend fun getAllPeliculas(): List<TituloDto>? {
-        return try {
-            val document = db.collection("peliculas").get().await()
-            document?.documents?.map { documentSnapshot ->
-                documentSnapshot.toObject<TituloDto>()!!
-            }
-        } catch (e: Exception) {
-            return null
-        }
-    }
-
-    override suspend fun getAllSeries(): List<TituloDto>? {
-        return try {
-            val document = db.collection("series").get().await()
-            document?.documents?.map { documentSnapshot ->
-                documentSnapshot.toObject<TituloDto>()!!
-            }
-        } catch (e: Exception) {
-            return null
-        }
-    }
 }

@@ -42,21 +42,6 @@ class TituloRepositoryImpl(
         return api.actualizarTitulo(id, nuevosDatos)
     }
 
-    override suspend fun getAllPeliculas(): List<Titulo>? {
-        val allMovies = api.getAllPeliculas()
-        allMovies?.apply {
-            return allMovies.map { TituloDto -> TituloDto.maptoEntity() }
-        }
-        return null
-    }
-
-    override suspend fun getAllSeries(): List<Titulo>? {
-        val allSeries = api.getAllSeries()
-        allSeries?.apply {
-            return allSeries.map { TituloDto -> TituloDto.maptoEntity() }
-        }
-        return null
-    }
 
 
 }
