@@ -133,6 +133,7 @@ class DetallesTitulo : AppCompatActivity() {
         }
 
         buttonReparto.setOnClickListener() {
+
             lifecycleScope.launch {
                 navController.navigate(R.id.crewFragment)
                 buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
@@ -167,6 +168,8 @@ class DetallesTitulo : AppCompatActivity() {
             this.onBackPressed()
         }
     }
+
+
 
     fun getSinopsisTitulo(): String {
         return tituloActual.sinopsis

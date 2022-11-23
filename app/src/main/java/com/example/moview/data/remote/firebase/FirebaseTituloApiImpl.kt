@@ -2,7 +2,9 @@ package com.example.moview.data.remote.firebase
 
 import com.example.moview.data.remote.api.TituloApi
 import com.example.moview.data.remote.dto.ComentarioDto
+import com.example.moview.data.remote.dto.RepartoDto
 import com.example.moview.data.remote.dto.TituloDto
+import com.example.moview.data.remote.dto.UserDto
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.tasks.await
@@ -97,6 +99,27 @@ class FirebaseTituloApiImpl(
             } catch (e: Exception) {
                 return false
             }
+        }
+    }
+
+    override suspend fun getReparto(id: String): List<RepartoDto>? {
+        return try {
+            val document = db.collection("peliculas").
+                    document(id).collection("comentarios").orderBy("nombre").get().await()
+            return document.documents.map { documentSnapshot ->
+                documentSnapshot.toObject<RepartoDto>()!!
+            }
+        }catch (e : Exception){
+            return try {
+                val document = db.collection("series").
+                document(id).collection("comentarios").orderBy("nombre").get().await()
+                return document.documents.map { documentSnapshot ->
+                    documentSnapshot.toObject<RepartoDto>()!!
+                }
+            }catch (e : Exception){
+                null
+            }
+            null
         }
     }
 }
