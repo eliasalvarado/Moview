@@ -1,6 +1,7 @@
 package com.example.moview.data.remote.api
 
 import com.example.moview.data.remote.dto.ComentarioDto
+import com.example.moview.data.remote.dto.RepartoDto
 import com.example.moview.data.remote.dto.TituloDto
 
 interface TituloApi {
@@ -10,4 +11,5 @@ interface TituloApi {
     suspend fun getSeriesByGender(genero: String): List<TituloDto>?
     suspend fun actualizarPuntajeTitulo(id:String, nuevosDatos: Map<String, MutableList<Boolean>>): Boolean
     suspend fun actualizarComentariosTitulo(id: String, nuevoComentario: ComentarioDto): Boolean
+    suspend fun getReparto(id:String): List<RepartoDto>?
 }

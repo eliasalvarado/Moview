@@ -2,30 +2,28 @@ package com.example.moview.data.remote.firebase
 
 import com.example.moview.data.remote.api.TituloApi
 import com.example.moview.data.remote.dto.ComentarioDto
+import com.example.moview.data.remote.dto.RepartoDto
 import com.example.moview.data.remote.dto.TituloDto
+import com.example.moview.data.remote.dto.UserDto
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.tasks.await
 import java.util.*
 
 class FirebaseTituloApiImpl(
-    private val db: FirebaseFirestore
-) : TituloApi {
+    private val db : FirebaseFirestore
+): TituloApi {
     override suspend fun getById(id: String): TituloDto? {
         return try {
-            var document = db.collection("peliculas").document(id).get().await()
-            if(document.data != null) {
-                document.toObject<TituloDto>()
-            } else {
-                return try {
-                    document = db.collection("series").document(id).get().await()
-                    document?.toObject<TituloDto>()
-                } catch (e: Exception) {
-                    return null
-                }
-            }
+            val document = db.collection("peliculas").document(id).get().await()
+            document?.toObject<TituloDto>()
         } catch (e: Exception) {
-            return null
+            return try {
+                val document = db.collection("series").document(id).get().await()
+                document?.toObject<TituloDto>()
+            } catch (e: Exception) {
+                return null
+            }
         }
     }
 
@@ -71,23 +69,17 @@ class FirebaseTituloApiImpl(
         nuevosDatos: Map<String, MutableList<Boolean>>
     ): Boolean {
         return try {
-            var document = db.collection("peliculas").document(id)
-            if(document.get().await().data != null) {
+            val document = db.collection("peliculas").document(id)
+            document.update(nuevosDatos)
+            true
+        } catch (e: Exception) {
+            return try {
+                val document = db.collection("series").document(id)
                 document.update(nuevosDatos)
                 true
-            } else {
-                return try {
-                    document = db.collection("series").document(id)
-                    if(document.get().await().data != null) {
-                        document.update(nuevosDatos)
-                        true
-                    } else return false
-                } catch (e: Exception) {
-                    return false
-                }
+            } catch (e: Exception) {
+                return false
             }
-        } catch (e: Exception) {
-            return false
         }
     }
 
@@ -96,23 +88,38 @@ class FirebaseTituloApiImpl(
         nuevoComentario: ComentarioDto
     ): Boolean {
         return try {
-            val document = db.collection("peliculas").document(id).get().await()
-            if(document.data != null) {
-                val documentCollection = db.collection("peliculas").document(id).collection("comentarios")
-                documentCollection.add(nuevoComentario).await()
-                true
-            } else {
-                return try {
-                    val documentCollection = db.collection("series").document(id).collection("comentarios")
-                    documentCollection.add(nuevoComentario).await()
-                    true
-                } catch (e: Exception) {
-                    return false
-                }
-            }
+            val document = db.collection("peliculas").document(id).collection("comentarios")
+            document.add(nuevoComentario).await()
+            true
         } catch (e: Exception) {
-            return false
+            return try {
+                val document = db.collection("series").document(id).collection("comentarios")
+                document.add(nuevoComentario).await()
+                true
+            } catch (e: Exception) {
+                return false
+            }
         }
     }
 
+    override suspend fun getReparto(id: String): List<RepartoDto>? {
+        return try {
+            val document = db.collection("peliculas").
+                    document(id).collection("comentarios").orderBy("nombre").get().await()
+            return document.documents.map { documentSnapshot ->
+                documentSnapshot.toObject<RepartoDto>()!!
+            }
+        }catch (e : Exception){
+            return try {
+                val document = db.collection("series").
+                document(id).collection("comentarios").orderBy("nombre").get().await()
+                return document.documents.map { documentSnapshot ->
+                    documentSnapshot.toObject<RepartoDto>()!!
+                }
+            }catch (e : Exception){
+                null
+            }
+            null
+        }
+    }
 }

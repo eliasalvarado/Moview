@@ -68,6 +68,9 @@
             app:destination="@id/comentarioUsuarioFragment"
             app:popUpTo="@id/crewFragment"
             app:popUpToInclusive="true"/>
+        <argument
+            android:name="Id"
+            app:argType="string" />
     </fragment>
 
     <fragment
