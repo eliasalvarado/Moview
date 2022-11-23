@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.detalles.Fragments.SinopsisFragment"
+    android:background="@color/fondoOscuro">
+
+    <TextView
+        android:id="@+id/autorComentario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/separacion10dp"
+        tools:text="Elías Alvarado"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        />
+
+    <ImageView
+        android:id="@+id/iconVerificado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/autorComentario"
+        android:layout_marginTop="@dimen/separacion10dp"
+        android:layout_marginStart="@dimen/separacion10dp"
+        android:src="@drawable/ic_verificado"
+        app:tint="@color/colorBotones" />
+
+    <TextView
+        android:id="@+id/comentario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/separacion10dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/autorComentario"
+        tools:text="Unos jóvenes ladrones creen haber encontrado la oportunidad de cometer el robo perfecto. Su objetivo será un ciego solitario, poseedor de millones de dólares ocultos. Pero tan pronto como entran en su casa serán conscientes de su error, pues se encontrarán atrapados y luchando por sobrevivir contra un psicópata con sus propios y temibles secretos." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
