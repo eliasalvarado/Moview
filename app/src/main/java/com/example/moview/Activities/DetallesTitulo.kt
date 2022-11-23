@@ -125,7 +125,7 @@ class DetallesTitulo : AppCompatActivity() {
                         crossfade(450)
                         placeholder(R.drawable.downloading_icon)
                         error(R.drawable.error_icon)
-                        transformations(RoundedCornersTransformation(25.0F))
+                        transformations(RoundedCornersTransformation(50.0F))
                     }
                     nombreTitulo.text = titulo.title
                     val detalles: String = titulo.year + " - Director"
@@ -197,8 +197,7 @@ class DetallesTitulo : AppCompatActivity() {
         }
 
         buttomBack.setOnClickListener {
-            //startActivity(Intent(this, MainActivity::class.java))
-            this.onBackPressed()
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
