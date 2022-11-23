@@ -128,7 +128,7 @@ class DetallesTitulo : AppCompatActivity() {
                         transformations(RoundedCornersTransformation(50.0F))
                     }
                     nombreTitulo.text = titulo.title
-                    val detalles: String = titulo.year + " - Director"
+                    val detalles: String = titulo.year
                     datosTitulo.text = detalles
                     val porcentaje: String = porcentajePuntaje(titulo.puntaje).toString() + " %"
                     calificacionTitulo.text = porcentaje
