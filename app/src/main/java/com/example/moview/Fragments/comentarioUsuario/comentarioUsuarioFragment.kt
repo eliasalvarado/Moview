@@ -101,27 +101,46 @@ class comentarioUsuarioFragment : Fragment(R.layout.fragment_comentario_usuario)
         lifecycleScope.launch(Dispatchers.IO) {
             currentUser = database.userDao().getTheUser()
             val puntajeExitoso = repository.actualizarPuntajeTitulo(tituloActual.id, datosActuales)
-            val comentarioPublicar = Comentario(
-                autor = currentUser[0].user,
-                comentario = comentarioTextInput,
-                critico = currentUser[0].critico
-            )
-            val comentarioExitoso = repository.actualizarComentariosTitulo(tituloActual.id, comentarioPublicar)
-            lifecycleScope.launch(Dispatchers.Main) {
-                if(puntajeExitoso && comentarioExitoso) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Tu comentario ha sido publicado con éxito",
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Ha ocurrido un error inesperado",
-                        Toast.LENGTH_LONG
-                    ).show()
+            if(textInputComentario.editText?.text.toString() != "") {
+                val comentarioPublicar = Comentario(
+                    autor = currentUser[0].user,
+                    comentario = comentarioTextInput,
+                    critico = currentUser[0].critico
+                )
+                val comentarioExitoso = repository.actualizarComentariosTitulo(tituloActual.id, comentarioPublicar)
+                lifecycleScope.launch(Dispatchers.Main) {
+                    if(puntajeExitoso && comentarioExitoso) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Tu comentario ha sido publicado con éxito",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Ha ocurrido un error inesperado",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            } else {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    if(puntajeExitoso) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Tu puntuacion ha sido publicado con éxito",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Ha ocurrido un error inesperado",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             }
+
         }
     }
 

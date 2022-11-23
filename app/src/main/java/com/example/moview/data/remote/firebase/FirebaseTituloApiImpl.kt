@@ -13,15 +13,19 @@ class FirebaseTituloApiImpl(
 ): TituloApi {
     override suspend fun getById(id: String): TituloDto? {
         return try {
-            val document = db.collection("peliculas").document(id).get().await()
-            document?.toObject<TituloDto>()
-        } catch (e: Exception) {
-            return try {
-                val document = db.collection("series").document(id).get().await()
-                document?.toObject<TituloDto>()
-            } catch (e: Exception) {
-                return null
+            var document = db.collection("peliculas").document(id).get().await()
+            if(document.data != null) {
+                document.toObject<TituloDto>()
+            } else {
+                return try {
+                    document = db.collection("series").document(id).get().await()
+                    document?.toObject<TituloDto>()
+                } catch (e: Exception) {
+                    return null
+                }
             }
+        } catch (e: Exception) {
+            return null
         }
     }
 
@@ -67,17 +71,23 @@ class FirebaseTituloApiImpl(
         nuevosDatos: Map<String, MutableList<Boolean>>
     ): Boolean {
         return try {
-            val document = db.collection("peliculas").document(id)
-            document.update(nuevosDatos)
-            true
-        } catch (e: Exception) {
-            return try {
-                val document = db.collection("series").document(id)
+            var document = db.collection("peliculas").document(id)
+            if(document.get().await().data != null) {
                 document.update(nuevosDatos)
                 true
-            } catch (e: Exception) {
-                return false
+            } else {
+                return try {
+                    document = db.collection("series").document(id)
+                    if(document.get().await().data != null) {
+                        document.update(nuevosDatos)
+                        true
+                    } else return false
+                } catch (e: Exception) {
+                    return false
+                }
             }
+        } catch (e: Exception) {
+            return false
         }
     }
 
@@ -86,17 +96,21 @@ class FirebaseTituloApiImpl(
         nuevoComentario: ComentarioDto
     ): Boolean {
         return try {
-            val document = db.collection("peliculas").document(id).collection("comentarios")
-            document.add(nuevoComentario).await()
-            true
-        } catch (e: Exception) {
-            return try {
-                val document = db.collection("series").document(id).collection("comentarios")
+            var document = db.collection("peliculas").document(id).collection("comentarios")
+            if(!document.get().await().isEmpty) {
                 document.add(nuevoComentario).await()
                 true
-            } catch (e: Exception) {
-                return false
+            } else {
+                return try {
+                    document = db.collection("series").document(id).collection("comentarios")
+                    document.add(nuevoComentario).await()
+                    true
+                } catch (e: Exception) {
+                    return false
+                }
             }
+        } catch (e: Exception) {
+            return false
         }
     }
 }

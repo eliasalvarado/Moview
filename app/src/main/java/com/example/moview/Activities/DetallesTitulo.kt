@@ -70,18 +70,19 @@ class DetallesTitulo : AppCompatActivity() {
             FirebaseTituloApiImpl(Firebase.firestore)
         )
 
+
+
         inicializarDatos(id)
         setListeners()
     }
 
     private fun inicializarDatos(id: String) {
-        lifecycleScope.launch(Dispatchers.Main) {
+        lifecycleScope.launch {
             buttonCalificar.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
             buttonSinopsis.setBackgroundColor(resources.getColor(R.color.teal_700))
             buttonReparto.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
             buttonComentarios.setBackgroundColor(resources.getColor(R.color.colorTextInputs))
         }
-
         lifecycleScope.launch(Dispatchers.IO) {
             val titulo = repository.getById(id = id)
             if(titulo != null) {
