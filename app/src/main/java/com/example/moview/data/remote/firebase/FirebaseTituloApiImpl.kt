@@ -9,8 +9,8 @@ import kotlinx.coroutines.tasks.await
 import java.util.*
 
 class FirebaseTituloApiImpl(
-    private val db : FirebaseFirestore
-): TituloApi {
+    private val db: FirebaseFirestore
+) : TituloApi {
     override suspend fun getById(id: String): TituloDto? {
         return try {
             var document = db.collection("peliculas").document(id).get().await()
@@ -114,4 +114,5 @@ class FirebaseTituloApiImpl(
             return false
         }
     }
+
 }

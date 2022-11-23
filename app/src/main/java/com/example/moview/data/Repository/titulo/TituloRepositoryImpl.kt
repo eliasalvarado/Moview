@@ -4,6 +4,7 @@ import com.example.moview.data.local.entity.Comentario
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.local.entity.maptoEntity
 import com.example.moview.data.remote.api.TituloApi
+import com.example.moview.data.remote.dto.TituloDto
 import com.example.moview.data.remote.dto.maptoEntity
 
 class TituloRepositoryImpl(
@@ -51,4 +52,7 @@ class TituloRepositoryImpl(
     ): Boolean {
         return api.actualizarComentariosTitulo(id, nuevoComentario.maptoEntity())
     }
+
+
+
 }
