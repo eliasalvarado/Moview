@@ -24,7 +24,6 @@ class CrewFragment : Fragment(R.layout.fragment_crew) {
         crewRecyclerView = view.findViewById(R.id.reparto_recycler)
         progressBar.visibility = View.VISIBLE
         crewList = mutableListOf()
-        crewList.add(CrewClass("Dylan Minnette", "https://cdn.watchmode.com/profiles/071246005_profile_185.jpg", "Alex"))
         instanceData()
         setRecycler()
     }
