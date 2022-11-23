@@ -10,7 +10,7 @@ data class Titulo(
     var generos: MutableList<String>,
     var poster: String,
     var puntaje: MutableList<Boolean>,
-    var reparto: MutableList<Persona>,
+    var reparto: MutableList<Reparto>,
     var sinopsis: String,
     var title: String,
     var trailer: String,

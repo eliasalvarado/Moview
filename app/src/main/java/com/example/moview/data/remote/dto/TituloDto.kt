@@ -2,6 +2,7 @@ package com.example.moview.data.remote.dto
 
 import com.example.moview.data.local.entity.Comentario
 import com.example.moview.data.local.entity.Persona
+import com.example.moview.data.local.entity.Reparto
 import com.example.moview.data.local.entity.Titulo
 
 data class TituloDto(
@@ -12,7 +13,7 @@ data class TituloDto(
     var generos: MutableList<String> = ArrayList(),
     var poster: String = "",
     var puntaje: MutableList<Boolean> = ArrayList(),
-    var reparto: MutableList<Persona> = ArrayList(),
+    var reparto: MutableList<Reparto> = ArrayList(),
     var sinopsis: String = "",
     var title: String = "",
     var trailer: String = "",

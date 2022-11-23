@@ -209,4 +209,9 @@ class DetallesTitulo : AppCompatActivity() {
     fun getComentarios(): MutableList<Comentario> {
         return tituloActual.comentarios
     }
+
+    fun getCrew(): MutableList<Reparto>{
+        return tituloActual.reparto
+    }
+
 }
