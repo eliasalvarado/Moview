@@ -2,6 +2,7 @@ package com.example.moview.data.Repository.titulo
 
 import com.example.moview.data.local.entity.Titulo
 import com.example.moview.data.remote.api.TituloApi
+import com.example.moview.data.remote.dto.TituloDto
 import com.example.moview.data.remote.dto.maptoEntity
 import java.util.*
 
@@ -40,4 +41,22 @@ class TituloRepositoryImpl(
     override suspend fun actualizarTitulo(id: String, nuevosDatos: Map<String, Objects>): String {
         return api.actualizarTitulo(id, nuevosDatos)
     }
+
+    override suspend fun getAllPeliculas(): List<Titulo>? {
+        val allMovies = api.getAllPeliculas()
+        allMovies?.apply {
+            return allMovies.map { TituloDto -> TituloDto.maptoEntity() }
+        }
+        return null
+    }
+
+    override suspend fun getAllSeries(): List<Titulo>? {
+        val allSeries = api.getAllSeries()
+        allSeries?.apply {
+            return allSeries.map { TituloDto -> TituloDto.maptoEntity() }
+        }
+        return null
+    }
+
+
 }

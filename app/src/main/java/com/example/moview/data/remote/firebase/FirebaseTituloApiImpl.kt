@@ -8,8 +8,8 @@ import kotlinx.coroutines.tasks.await
 import java.util.*
 
 class FirebaseTituloApiImpl(
-    private val db : FirebaseFirestore
-): TituloApi {
+    private val db: FirebaseFirestore
+) : TituloApi {
     override suspend fun getById(id: String): TituloDto? {
         return try {
             val document = db.collection("peliculas").document(id).get().await()
@@ -74,6 +74,28 @@ class FirebaseTituloApiImpl(
             } catch (e: Exception) {
                 return e.message ?: "Error"
             }
+        }
+    }
+
+    override suspend fun getAllPeliculas(): List<TituloDto>? {
+        return try {
+            val document = db.collection("peliculas").get().await()
+            document?.documents?.map { documentSnapshot ->
+                documentSnapshot.toObject<TituloDto>()!!
+            }
+        } catch (e: Exception) {
+            return null
+        }
+    }
+
+    override suspend fun getAllSeries(): List<TituloDto>? {
+        return try {
+            val document = db.collection("series").get().await()
+            document?.documents?.map { documentSnapshot ->
+                documentSnapshot.toObject<TituloDto>()!!
+            }
+        } catch (e: Exception) {
+            return null
         }
     }
 }

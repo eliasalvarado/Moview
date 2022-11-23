@@ -9,7 +9,8 @@ data class TitleDto(
     val tmdb_id: Int,
     val tmdb_type: String,
     val type: String,
-    val year: Int
+    val year: Int,
+    val director: String
 )
 
 fun TitleDto.mapToEntity(): TituloEstreno = TituloEstreno(
